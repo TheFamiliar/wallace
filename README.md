@@ -1,4 +1,4 @@
 wallace
 =======
 
-A colour theme to improve productivity and creativity while you code
+A not-so-final colour theme to improve productivity and creativity while you code
