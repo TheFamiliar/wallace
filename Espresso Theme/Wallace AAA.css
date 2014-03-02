@@ -1,0 +1,437 @@
+/*
+	@theme Wallace
+	@override-placeholders css, html, php, markdown, scss
+	@author Martin Jewiss, Mpjdesign
+*/
+
+/*
+	* Copyright (c) 2014 Martin Jewiss.
+	* This Source Code Form is subject to the terms of the Mozilla Public
+	* License, v. 2.0. If a copy of the MPL was not distributed with this
+	* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+/*
+Variables
+HUES
+Main Green 76:    76D25D
+Turquoise:	      00D0D0 css
+Blue:				      00CAFF php + units?
+Violet:			      8FBFFF html
+Magenta:		      E5A2FF
+Grey (red):	      BCBCBC punctuation + units?
+Orange:			      F1B054
+Yellow:			      C0C334 values + units?
+
+SHADES AND TONES
+Green 6:          002200
+Green 9:          002700
+Green 15(bg):     003100
+Green 24:         004600
+Green 38:         006A00
+Green 50:         278915
+Green 62:         4DA95D
+Green 85:         90EB74
+Green 91:         A0FC83
+Green 94:         AAFF8D
+
+*/
+
+
+@base {
+	color: #76D25D;
+	background-color: #003100;
+	insertion-point-color: #AAFF8D;
+	selection-background-color: #004600;
+	current-line-background-color: #002700;
+}
+
+/* @group Generic */
+
+apache, css, js, php, python, ruby, source, sourcecode, tag, constant {
+	spell-check: disabled;
+}
+
+tag, tag > string > punctuation {
+	color: #BCBCBC;
+}
+
+tag>name {
+	color: #8FBFFF;
+	font-weight: bold;
+}
+
+attribute-name, punctuation.definition.tag {
+	color: #8FBFFF;
+}
+
+tag > string.quoted, tag > attribute-with-value > string.quoted {
+	color: #00D0D0;
+}
+
+comment, comment > punctuation, comment tag, comment attribute-name, comment punctuation.definition.tag, comment tag > string.quoted, comment tag > attribute-with-value > string.quoted  {
+	color: #006A00;
+	font-weight: normal;
+}
+
+comment tag>name {
+	color: #006A00;
+	font-weight: bold;
+}
+
+tag.doctype, tag.doctype > *, tag.doctype > string.quoted {
+	
+} /* this was removed from the css selector above */
+
+string.quoted {
+	color: #BCBCBC;
+}
+
+
+/*
+
+comment, comment > punctuation {
+	color: #006A00;
+}
+
+string {
+	color: #BCBCBC;
+}
+
+operator {
+	color: #F1B054;
+}
+
+keyword, keyword.operator, constant, numeric, character {
+	color: #E5A2FF;
+}
+
+comment keyword {
+	color: #006A00;
+	font-weight: bold;
+}
+
+variable {
+	color: tktktk;
+}
+
+function, definition name {
+	color: #EE0F04;
+}
+
+invalid {
+	color: tktktk;
+	background: rgba(150, 0, 0, .8);
+}*/
+
+/* @group CSS */
+
+css.embedded, css.embedded property-name {
+	color: #tktktk;
+	background: tktktk;
+}
+
+css punctuation, css selector punctuation, css.at-rule string.quoted delimiter, css property-value punctuation.separator, css property-value string.quoted delimiter.balanced.quote {
+	color: #BCBCBC;
+}
+
+css.at-rule keyword.control {
+	color: #8FBFFF;
+	font-weight: bold;
+}
+
+css selector {
+	color: #00D0D0;
+}
+
+css property-name {
+	color: #76D25D;
+}
+
+css property-value, css property-value constant, css property-value keyword, css property-value support.function.misc.css parameter {
+	color: #C0C334;
+}
+
+css property-value string, css at-rule string {
+	color: #C0C334;
+}
+
+css property-value keyword.other, css property-value punctuation.definition, support.function.misc.css, support.function.color.css name {
+  color: #00CAFF;
+}
+
+css comment punctuation {
+	color: #006A00;
+}
+
+css keyword.important {
+	font-weight: bold;
+}
+
+css group-start name {
+	font-weight: bold;
+}
+
+/* @end */
+
+/* @group SCSS */
+
+scss.embedded, scss.embedded property-name {
+	color: #tktktk;
+	background: tktktk;
+}
+
+scss punctuation, scss selector punctuation, scss.at-rule string.quoted delimiter, scss property-value punctuation.separator, scss property-value string.quoted delimiter.balanced.quote {
+	color: #BCBCBC;
+}
+
+scss.at-rule keyword.control {
+	color: #8FBFFF;
+	font-weight: bold;
+}
+
+scss entity.other, keyword.control {
+	color: #00D0D0;
+}
+
+scss property-name.scss {
+	color: #76D25D;
+}
+
+scss constant, scss property-value keyword, scss variable.parameter, scss property-value {
+	color: #C0C334;
+}
+
+scss constant.other.unit {
+  color: #00CAFF;
+}
+
+scss comment punctuation {
+	color: #006A00;
+}
+
+scss keyword.important {
+	font-weight: bold;
+}
+
+/* @end */
+
+/* @group HTML+XML */
+
+html character.entity {
+	color: #BCBCBC;
+}
+
+/* @end */
+
+/*tag {
+	color: #8FBFFF;
+	spell-check: disabled;
+}
+
+html doctype, html doctype name, html doctype punctuation,
+xml processing-instruction, xml processing-instruction string, xml processing-instruction string value {
+	color: #BCBCBC;
+}
+
+html string value,
+xml string value {
+	color: #00D0D0;
+}
+
+html character.entity {
+	color: #BCBCBC;
+}
+
+comment tag, comment string {
+  color:  rgba(0, 202, 176, 0.38);
+}
+
+comment html string value {
+  color: rgba(210, 178, 0, 0.38);
+}*/
+
+/* @end */
+
+
+
+/* @group Javascript */
+
+/*js.embedded {
+	background: #24211D;
+}
+
+js variable {
+	color: #fff;
+}
+
+js variable.string {
+	color: #abc837;
+}
+
+js constant {
+	color: #CDDE87;
+}
+
+js class.constructor > variable, js function.definition name {
+	color: #EE0F04;
+}
+
+js keyword.language {
+	color: #CDDE87;
+}*/
+
+/* @end */
+
+/* @group Apache */
+
+/*apache keyword.directive {
+	color: #CDDE87;
+}
+
+apache tag > keyword {
+	color: #e8bf6a;
+}
+
+apache variable {
+	color: #e5d08b;
+}*/
+
+/* @end */
+
+/* @group PHP */
+
+php.sourcecode {
+	background: #1a1a1a;
+	spell-check: disabled;
+}
+
+php delimiter.source, php delimiter.source > *,
+php string > expression.complex > punctuation {
+	color: #00CAFF;
+}
+
+php definition name, php variable.function {
+	color: #E5A2FF;
+	font-weight: normal;
+}
+
+php variable.keyword {
+	color: #C0C334;
+	font-weight: bold;
+}
+
+php constant {
+	color: #ffffff;
+}
+
+php constant.numeric, php constant.language {
+	color: #e8bf6a;
+}
+
+php comment > keyword {
+	color: #776644;
+	font-weight: bold;
+}
+
+/* @end */
+
+/* @group RegEx */
+
+/*regex, regex.literal > punctuation.definition {
+	color: #abc837;
+}
+
+regex punctuation.group {
+	color: #e8bf6a;
+}
+
+regex keyword, regex operator, regex escaped, regex character-class, regex character-class > punctuation {
+	color: #CDDE87;
+}
+
+regex > regex.group, regex.group > punctuation {
+	background: rgba(255, 255, 255, 0);
+}*/
+
+/* @end */
+
+/* @group Markdown */
+
+markdown > punctuation.definition, markdown *:not(html,comment) punctuation.definition, markdown separator {
+  color: #BCBCBC;
+}
+
+markdown hard-break {
+  background: #BCBCBC;
+}
+
+markdown header {
+  font-weight: bold;
+}
+
+markdown header name {
+  color: #8FBFFF;
+}
+
+markdown bold {
+  font-weight: bold;
+}
+
+markdown italic {
+  font-style: italic;
+}
+
+markdown bold italic, markdown italic bold {
+  font-weight: bold;
+  font-style: italic;
+}
+
+markdown code {
+  color: #C0C334;
+}
+
+markdown link, markdown image {
+  color: #8FBFFF;
+}
+
+markdown link constant, markdown image constant, markdown link string, markdown image string {
+	color: #00D0D0;
+}
+
+markdown link > punctuation, markdown image > punctuation {
+  color: #BCBCBC;
+}
+
+markdown url, markdown email {
+  color: #E5A2FF;
+}
+
+markdown keyword.reference {
+  color: #F1B054;
+}
+
+/* @end */
+
+/* @group Third Party */
+
+/* @group ExpressionEngine */
+
+/*ee.tag, ee.operator, ee.attribute-name,
+ee ee.tag > ee.name, ee ee.tag > ee.punctuation, ee ee.tag.conditional,
+ee ee.tag ee.attribute-name {
+	color: #CDDE87;
+}
+
+ee ee.tag ee.attribute-name {
+	font-weight: normal;
+}
+
+ee ee.tag.self-closing.conditional {
+	background: #333;
+}
+
+ee.attribute, ee ee.tag ee.attribute {
+	color: #abc837;
+}*/
+/* @end */
