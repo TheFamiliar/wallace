@@ -88,6 +88,65 @@ string.quoted {
 }
 
 
+
+/* @group Javascript */
+
+js punctuation, js operator {
+	color: #BCBCBC;
+}
+
+js.embedded {
+	background: #24211D;
+}
+
+js variable {
+	color: #tktktk;
+}
+
+js variable.string, js string.quoted {
+	color: #00D0D0;
+}
+
+js constant {
+	color: #C0C334;
+}
+
+js class.constructor > variable, js function.definition name {
+	color: tktktk;
+}
+
+js keyword.language, js keyword.control {
+	color: #F1B054;
+}
+
+js keyword.storage {
+	color: ;
+}
+
+js name {
+	color: #E5A2FF;
+}
+
+/* @end */
+
+/* @group Apache */
+
+/*apache keyword.directive {
+	color: #CDDE87;
+}
+
+apache tag > keyword {
+	color: #e8bf6a;
+}
+
+apache variable {
+	color: #e5d08b;
+}*/
+
+/* @end */
+
+
+
 /*
 
 comment, comment > punctuation {
@@ -253,51 +312,6 @@ comment html string value {
 
 /* @end */
 
-
-
-/* @group Javascript */
-
-/*js.embedded {
-	background: #24211D;
-}
-
-js variable {
-	color: #fff;
-}
-
-js variable.string {
-	color: #abc837;
-}
-
-js constant {
-	color: #CDDE87;
-}
-
-js class.constructor > variable, js function.definition name {
-	color: #EE0F04;
-}
-
-js keyword.language {
-	color: #CDDE87;
-}*/
-
-/* @end */
-
-/* @group Apache */
-
-/*apache keyword.directive {
-	color: #CDDE87;
-}
-
-apache tag > keyword {
-	color: #e8bf6a;
-}
-
-apache variable {
-	color: #e5d08b;
-}*/
-
-/* @end */
 
 /* @group PHP */
 
