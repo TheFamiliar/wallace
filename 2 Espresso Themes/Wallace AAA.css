@@ -87,7 +87,19 @@ string.quoted {
 	color: #BCBCBC;
 }
 
+/* @group Twig */
+Twig statement {
+  color: #BCBCBC;
+}
 
+Twig statement.content {
+  color: #C0C334;
+}
+
+Twig statement language.command, Twig expression {
+  color: #00CAFF;
+}
+/* @end */
 
 /* @group Javascript */
 
