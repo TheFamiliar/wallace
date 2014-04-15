@@ -100,7 +100,16 @@ Twig statement language.command, Twig expression {
   color: #00CAFF;
 }
 /* @end */
-
+/*
+Main Green 76:    76D25D
+Turquoise:	      00D0D0 css
+Blue:				      00CAFF php + units?
+Violet:			      8FBFFF html
+Magenta:		      E5A2FF
+Grey (red):	      BCBCBC punctuation + units?
+Orange:			      F1B054
+Yellow:			      C0C334 values + units?
+*/
 /* @group Javascript */
 
 js punctuation, js operator {
@@ -124,7 +133,7 @@ js constant {
 }
 
 js class.constructor > variable, js function.definition name {
-	color: tktktk;
+	color: red;
 }
 
 js keyword.language, js keyword.control {
