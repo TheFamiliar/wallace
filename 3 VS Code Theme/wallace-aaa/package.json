@@ -1,0 +1,21 @@
+{
+    "name": "wallace-aaa",
+    "displayName": "Wallace-AAA",
+    "description": "Colour theme based on psychology research into best colours for creativity. Colour contrast meets AAA accessibility rating.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Wallace AAA",
+                "uiTheme": "vs-dark",
+                "path": "./themes/Wallace AAA-color-theme.json"
+            }
+        ]
+    }
+}
