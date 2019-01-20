@@ -1,0 +1,23 @@
+HUES
+Main Green 76:      76D25D editor foregraound
+Turquoise:	        00D0D0 css
+Blue:		        00CAFF php + units?
+Violet:		        8FBFFF html
+Magenta:	        E5A2FF
+Grey (red):	        BCBCBC punctuation + units?
+Orange:		        F1B054
+Yellow:		        C0C334 values + units?
+[Pink:		        FFA87F errors?]
+
+SHADES AND TONES
+Green 6:            002200
+Green 9:            002700
+Green 15(bg):       003100 editor background
+Green 24:           004600
+Green 38:           006A00
+Green 50:           278915
+Green 62:           4DA95D
+Green 85:           90EB74
+Green 91:           002200
+Green 94:           AAFF8D
+
