@@ -1,5 +1,5 @@
 HUES
-Main Green 76:      76D25D editor foregraound
+Main Green 76:      76D25D editor foreground
 Turquoise:	        00D0D0 css
 Blue:		        00CAFF php + units?
 Violet:		        8FBFFF html

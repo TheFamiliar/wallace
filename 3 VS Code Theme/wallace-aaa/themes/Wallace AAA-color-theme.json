@@ -273,7 +273,7 @@
 				"string constant.other.placeholder"
 			],
 			"settings": {
-				"foreground": "#E5A2FF"
+				"foreground": "#C0C334"
 			}
 		},
 		{
@@ -316,25 +316,37 @@
 				"punctuation.definition.tag",
 				"punctuation.separator.inheritance.php",
 				"punctuation.definition.tag.html",
-				"punctuation.definition.tag.begin.html",
-				"punctuation.definition.tag.end.html",
 				"punctuation.section.embedded",
 				"keyword.other.template",
-				"keyword.other.substitution"
+                "keyword.other.substitution",
+                "keyword.other.important",
+				"punctuation.definition.tag.begin.html",
+				"punctuation.definition.tag.end.html"
 			],
 			"settings": {
 				"foreground": "#BCBCBC"
 			}
-		},
+        },
+        {
+            "name": "PHP",
+            "scope": [
+                "punctuation.section.embedded.begin.php",
+                "punctuation.section.embedded.end.php"
+            ],
+            "settings": {
+                "foreground": "#E5A2FF"
+            }
+        },
 		{
 			"name": "Tag", //+
 			"scope": [
 				"entity.name.tag",
 				"meta.tag.sgml",
-				"markup.deleted.git_gutter"
+                "markup.deleted.git_gutter"
 			],
 			"settings": {
-				"foreground": "#8FBFFF"
+                //"fontStyle": "bold",
+				"foreground": "#00CAFF"
 			}
 		},
 		{
@@ -398,7 +410,7 @@
 			],
 			"settings": {
 				"fontStyle": "normal",
-				"foreground": "#C0C334"
+				"foreground": "#00D0D0"
 			}
 		},
 		{
@@ -437,7 +449,7 @@
 				"source.postcss support.type.property-name"
 			],
 			"settings": {
-				"foreground": "#00D0D0"
+				"foreground": "#8FBFFF"
 			}
 		},
 		{
@@ -482,19 +494,19 @@
 			}
 		},
 		{
-			"name": "Attributes", //-
+			"name": "Attributes", //+
 			"scope": [
 				"entity.other.attribute-name"
 			],
 			"settings": {
-				"foreground": "#FF0000"
+				"foreground": "#8FBFFF"
 			}
-		},
+        },
 		{
 			"name": "HTML Attributes", //+
 			"scope": [
 				"text.html.basic entity.other.attribute-name.html",
-				"text.html.basic entity.other.attribute-name"
+                "text.html.basic entity.other.attribute-name"
 			],
 			"settings": {
 				"fontStyle": "italic",
@@ -504,7 +516,7 @@
 		{
 			"name": "CSS Classes", //+
 			"scope": [
-				"entity.other.attribute-name.class"
+                "entity.other.attribute-name.class"
 			],
 			"settings": {
 				"foreground": "#00D0D0"
@@ -517,6 +529,15 @@
 			],
 			"settings": {
 				"foreground": "#00D0D0"
+			}
+		},
+		{
+			"name": "States and Psuedo-Classes", //+
+			"scope": [
+                "entity.other.attribute-name.pseudo-class"
+			],
+			"settings": {
+				"foreground": "#E5A2FF"
 			}
 		},
 		{
