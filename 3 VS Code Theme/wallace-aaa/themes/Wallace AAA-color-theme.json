@@ -279,10 +279,11 @@
 		{
 			"name": "Colors", //+
 			"scope": [
-				"constant.other.color"
+                "constant.other.color",
+                "constant.other.color.rgb-value.hex.css"
 			],
 			"settings": {
-				"foreground": "#BCBCBC"
+				"foreground": "#F1B054"
 			}
 		},
 		{
@@ -314,12 +315,15 @@
 				"punctuation",
 				"meta.tag",
 				"punctuation.definition.tag",
-				"punctuation.separator.inheritance.php",
+                "punctuation.separator.inheritance.php",
+                "keyword.operator.key.php",
+                "keyword.operator.assignment.php",
 				"punctuation.definition.tag.html",
 				"punctuation.section.embedded",
 				"keyword.other.template",
                 "keyword.other.substitution",
                 "keyword.other.important",
+                "keyword.other.default.scss",
 				"punctuation.definition.tag.begin.html",
 				"punctuation.definition.tag.end.html"
 			],
@@ -331,7 +335,19 @@
             "name": "PHP",
             "scope": [
                 "punctuation.section.embedded.begin.php",
-                "punctuation.section.embedded.end.php"
+                "punctuation.section.embedded.end.php",
+                "storage.type.function.php",
+                "storage.modifier.php"
+            ],
+            "settings": {
+                "foreground": "#00CAFF"
+            }
+        },
+        {
+            "name": "PHP Keywords",
+            "scope": [
+                "keyword.control.return.php",
+                "constant.other.php"
             ],
             "settings": {
                 "foreground": "#E5A2FF"
@@ -346,7 +362,7 @@
 			],
 			"settings": {
                 //"fontStyle": "bold",
-				"foreground": "#00CAFF"
+				"foreground": "#00D696"
 			}
 		},
 		{
@@ -469,7 +485,7 @@
 				"variable.language"
 			],
 			"settings": {
-				"fontStyle": "italic",
+				//"fontStyle": "italic",
 				"foreground": "#C0C334"
 			}
 		},
@@ -532,14 +548,38 @@
 			}
 		},
 		{
+			"name": "CSS Strings", //+
+			"scope": [
+                "string.quoted.single.scss",
+                "string.quoted.double.scss",
+                "support.constant.property-value.css",
+                "support.constant.font-name.css",
+                "meta.definition.variable.scss"
+			],
+			"settings": {
+				"foreground": "#00D0D0"
+			}
+		},
+		{
 			"name": "States and Psuedo-Classes", //+
 			"scope": [
-                "entity.other.attribute-name.pseudo-class"
+                "entity.other.attribute-name.pseudo-class",
+                "constant.other.scss"
 			],
 			"settings": {
 				"foreground": "#E5A2FF"
 			}
 		},
+        {
+			"name": "Misc CSS", //+
+			"scope": [
+                "keyword.other.important",
+                "keyword.other.default.scss"
+			],
+			"settings": {
+				"foreground": "#BCBCBC"
+			}
+        },
 		{
 			"name": "Inserted", //-
 			"scope": [

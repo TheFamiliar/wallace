@@ -8,6 +8,7 @@ Grey (red):	        BCBCBC punctuation + units?
 Orange:		        F1B054
 Yellow:		        C0C334 values + units?
 [Pink:		        FFA87F errors?]
+[Pea Green:         00D696]
 
 SHADES AND TONES
 Green 6:            002200
