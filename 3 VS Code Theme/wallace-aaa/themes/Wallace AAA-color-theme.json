@@ -4,10 +4,10 @@
 	"colors": {
 		"editor.background": "#003100",
 		"editor.foreground": "#76d25d",
-		"editor.lineHighlightBackground": "#002200",
-		"editor.selectionBackground": "#002700",
+		"editor.lineHighlightBackground": "#002700",
+		"editor.selectionBackground": "#004600",
 		"editorCursor.foreground": "#aaff8d",
-		"editorWhitespace.foreground": "#004600",
+		"editorWhitespace.foreground": "#002200",
 		//"activityBar.background": "#333333",
 		//"activityBar.dropBackground": "#ffffff1f",
 		//"activityBar.foreground": "#ffffff",
