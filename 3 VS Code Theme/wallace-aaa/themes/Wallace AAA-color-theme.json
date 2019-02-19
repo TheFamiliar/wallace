@@ -533,7 +533,8 @@
 		{
 			"name": "CSS Classes", //+
 			"scope": [
-                "entity.other.attribute-name.class"
+                "entity.other.attribute-name.class",
+                "entity.other.attribute-name.id"
 			],
 			"settings": {
 				"foreground": "#00D0D0"
