@@ -890,6 +890,63 @@
 			}
 		},
 		{
+			"name": "Blade - Delimiters & Directives",
+			"scope": [
+				"punctuation.section.embedded.begin.blade",
+				"punctuation.section.embedded.end.blade",
+				"keyword.blade",
+				"support.function.construct.blade",
+				"meta.tag.template.blade punctuation"
+			],
+			"settings": {
+				"foreground": "#6EC4FD"
+			}
+		},
+		{
+			"name": "Blade - Directive Keywords",
+			"scope": [
+				"keyword.control.blade",
+				"keyword.other.blade",
+				"entity.name.function.blade",
+				"support.constant.blade"
+			],
+			"settings": {
+				"foreground": "#D8BA0F",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Blade - Variables",
+			"scope": [
+				"variable.other.blade",
+				"variable.other.property.blade",
+				"constant.other.blade"
+			],
+			"settings": {
+				"foreground": "#FF95F4"
+			}
+		},
+		{
+			"name": "Blade - Strings",
+			"scope": [
+				"string.quoted.blade",
+				"meta.tag.template.blade string"
+			],
+			"settings": {
+				"foreground": "#D8BA0F"
+			}
+		},
+		{
+			"name": "Blade - PHP Embedded",
+			"scope": [
+				"source.blade meta.embedded.line.php",
+				"source.blade meta.embedded.block.php"
+			],
+			"settings": {
+				"foreground": "#6EC4FD"
+			}
+		},
+		{
 			"name": "Markdown - Plain",
 			"scope": [
 				"text.html.markdown",
