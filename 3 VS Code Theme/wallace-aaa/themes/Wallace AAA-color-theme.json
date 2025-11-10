@@ -947,6 +947,78 @@
 			}
 		},
 		{
+			"name": "DotENV - Comments",
+			"scope": [
+				"comment.line.number-sign.dotenv",
+				"punctuation.definition.comment.dotenv"
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#006A00"
+			}
+		},
+		{
+			"name": "DotENV - Variable Names/Keys",
+			"scope": [
+				"variable.other.env",
+				"keyword.other.definition.dotenv",
+				"variable.declaration.dotenv"
+			],
+			"settings": {
+				"foreground": "#1BD2B8"
+			}
+		},
+		{
+			"name": "DotENV - Equals Sign",
+			"scope": [
+				"keyword.operator.assignment.dotenv",
+				"punctuation.separator.key-value.dotenv"
+			],
+			"settings": {
+				"foreground": "#BBBBBB"
+			}
+		},
+		{
+			"name": "DotENV - String Values",
+			"scope": [
+				"string.quoted.single.dotenv",
+				"string.quoted.double.dotenv",
+				"string.unquoted.dotenv"
+			],
+			"settings": {
+				"foreground": "#D8BA0F"
+			}
+		},
+		{
+			"name": "DotENV - Numbers",
+			"scope": [
+				"constant.numeric.dotenv"
+			],
+			"settings": {
+				"foreground": "#FFAA25"
+			}
+		},
+		{
+			"name": "DotENV - Boolean & Null",
+			"scope": [
+				"constant.language.boolean.dotenv",
+				"constant.language.null.dotenv"
+			],
+			"settings": {
+				"foreground": "#FF95F4"
+			}
+		},
+		{
+			"name": "DotENV - String Quotes",
+			"scope": [
+				"punctuation.definition.string.begin.dotenv",
+				"punctuation.definition.string.end.dotenv"
+			],
+			"settings": {
+				"foreground": "#BBBBBB"
+			}
+		},
+		{
 			"name": "Markdown - Plain",
 			"scope": [
 				"text.html.markdown",
