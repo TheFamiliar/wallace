@@ -678,46 +678,52 @@
 			}
 		},
 		{
-			"name": "Twig - Statement",
+			"name": "Twig - Delimiters",
 			"scope": [
-				"meta.tag.template.value.twig",
-				"meta.tag.template.block.twig"
-			],
-			"settings": {
-				"foreground": "#BBBBBB"
-			}
-		},
-		{
-			"name": "Twig - Statement Content",
-			"scope": [
-				"meta.tag.template.value.twig string",
-				"meta.tag.template.block.twig string"
-			],
-			"settings": {
-				"foreground": "#D8BA0F"
-			}
-		},
-		{
-			"name": "Twig - Language Command & Expression",
-			"scope": [
-				"keyword.control.twig",
-				"keyword.operator.twig",
-				"support.function.twig",
-				"variable.other.twig"
+				"punctuation.section.tag.twig",
+				"punctuation.definition.tag.begin.twig",
+				"punctuation.definition.tag.end.twig",
+				"meta.tag.template.value.twig punctuation",
+				"meta.tag.template.block.twig punctuation"
 			],
 			"settings": {
 				"foreground": "#6EC4FD"
 			}
 		},
 		{
-			"name": "Twig - Delimiters",
+			"name": "Twig - Functions & Variables",
 			"scope": [
-				"punctuation.section.tag.twig",
-				"punctuation.definition.tag.begin.twig",
-				"punctuation.definition.tag.end.twig"
+				"support.function.twig",
+				"variable.other.twig",
+				"variable.other.property.twig",
+				"entity.name.function.twig"
 			],
 			"settings": {
-				"foreground": "#BBBBBB"
+				"foreground": "#FF95F4"
+			}
+		},
+		{
+			"name": "Twig - Keywords & Control",
+			"scope": [
+				"keyword.control.twig",
+				"keyword.operator.twig",
+				"storage.type.twig",
+				"variable.language.twig"
+			],
+			"settings": {
+				"foreground": "#D8BA0F",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Twig - String Content",
+			"scope": [
+				"meta.tag.template.value.twig string",
+				"meta.tag.template.block.twig string",
+				"string.quoted.twig"
+			],
+			"settings": {
+				"foreground": "#D8BA0F"
 			}
 		},
 		{
