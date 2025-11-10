@@ -774,6 +774,73 @@
 			}
 		},
 		{
+			"name": "ExpressionEngine - Tag Delimiters & Punctuation",
+			"scope": [
+				"punctuation.definition.tag.ee",
+				"punctuation.section.embedded.ee",
+				"punctuation.definition.tag.begin.ee",
+				"punctuation.definition.tag.end.ee"
+			],
+			"settings": {
+				"foreground": "#6EC4FD"
+			}
+		},
+		{
+			"name": "ExpressionEngine - Tag Names",
+			"scope": [
+				"entity.name.tag.ee",
+				"support.class.ee",
+				"meta.tag.ee entity.name"
+			],
+			"settings": {
+				"foreground": "#6EC4FD",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "ExpressionEngine - Attribute Names",
+			"scope": [
+				"entity.other.attribute-name.ee",
+				"meta.tag.ee support.type.attribute-name"
+			],
+			"settings": {
+				"foreground": "#FF95F4"
+			}
+		},
+		{
+			"name": "ExpressionEngine - Attribute Values",
+			"scope": [
+				"string.quoted.ee",
+				"meta.tag.ee string.quoted"
+			],
+			"settings": {
+				"foreground": "#D8BA0F"
+			}
+		},
+		{
+			"name": "ExpressionEngine - Variables & Operators",
+			"scope": [
+				"variable.other.ee",
+				"keyword.operator.ee",
+				"support.function.ee"
+			],
+			"settings": {
+				"foreground": "#FF95F4"
+			}
+		},
+		{
+			"name": "ExpressionEngine - Conditionals & Keywords",
+			"scope": [
+				"keyword.control.conditional.ee",
+				"meta.tag.conditional.ee",
+				"storage.type.ee"
+			],
+			"settings": {
+				"foreground": "#D8BA0F",
+				"fontStyle": "bold"
+			}
+		},
+		{
 			"name": "Twig - Delimiters",
 			"scope": [
 				"punctuation.section.tag.twig",
