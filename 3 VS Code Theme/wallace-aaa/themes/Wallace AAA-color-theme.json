@@ -678,6 +678,102 @@
 			}
 		},
 		{
+			"name": "Apache - Directives",
+			"scope": [
+				"keyword.directive.apache",
+				"entity.name.tag.directive.apache",
+				"support.function.directive.apache"
+			],
+			"settings": {
+				"foreground": "#18D853"
+			}
+		},
+		{
+			"name": "Apache - Keywords",
+			"scope": [
+				"keyword.control.apache",
+				"storage.type.apache"
+			],
+			"settings": {
+				"foreground": "#FFAA25"
+			}
+		},
+		{
+			"name": "Apache - Variables",
+			"scope": [
+				"variable.other.apache",
+				"variable.language.apache"
+			],
+			"settings": {
+				"foreground": "#D8BA0F"
+			}
+		},
+		{
+			"name": "Apache - Strings",
+			"scope": [
+				"string.quoted.apache",
+				"string.unquoted.apache"
+			],
+			"settings": {
+				"foreground": "#1BD2B8"
+			}
+		},
+		{
+			"name": "RegEx - Pattern",
+			"scope": [
+				"string.regexp",
+				"string.regexp.js",
+				"string.regexp.ts"
+			],
+			"settings": {
+				"foreground": "#18D853"
+			}
+		},
+		{
+			"name": "RegEx - Character Class",
+			"scope": [
+				"constant.character.character-class.regexp",
+				"constant.other.character-class.set.regexp",
+				"constant.other.character-class.regexp",
+				"keyword.control.character-class.regexp"
+			],
+			"settings": {
+				"foreground": "#1BD2B8"
+			}
+		},
+		{
+			"name": "RegEx - Quantifier",
+			"scope": [
+				"keyword.operator.quantifier.regexp",
+				"keyword.operator.or.regexp"
+			],
+			"settings": {
+				"foreground": "#FFAA25"
+			}
+		},
+		{
+			"name": "RegEx - Group",
+			"scope": [
+				"punctuation.definition.group.regexp",
+				"punctuation.definition.group.assertion.regexp",
+				"keyword.other.back-reference.regexp"
+			],
+			"settings": {
+				"foreground": "#FFAA25"
+			}
+		},
+		{
+			"name": "RegEx - Anchor & Operator",
+			"scope": [
+				"keyword.control.anchor.regexp",
+				"keyword.operator.regexp",
+				"constant.character.escape.backslash.regexp"
+			],
+			"settings": {
+				"foreground": "#C8ACFF"
+			}
+		},
+		{
 			"name": "Twig - Delimiters",
 			"scope": [
 				"punctuation.section.tag.twig",
