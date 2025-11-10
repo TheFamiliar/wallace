@@ -3,10 +3,10 @@
     "displayName": "Wallace AAA",
     "description": "A psychology-based dark theme designed to improve creativity and productivity. Features AAA accessibility contrast ratings with carefully researched color choices.",
     "version": "0.0.1",
-    "publisher": "mpjdesign",
+    "publisher": "the_familiar",
     "author": {
         "name": "Martin Jewiss",
-        "email": "mpjdesign@example.com"
+        "email": "hello@thefamiliar.tech"
     },
     "license": "MPL-2.0",
     "repository": {
