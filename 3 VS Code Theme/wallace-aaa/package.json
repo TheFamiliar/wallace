@@ -1,14 +1,44 @@
 {
     "name": "wallace-aaa",
-    "displayName": "Wallace-AAA",
-    "description": "Colour theme based on psychology research into best colours for creativity. Colour contrast meets AAA accessibility rating.",
+    "displayName": "Wallace AAA",
+    "description": "A psychology-based dark theme designed to improve creativity and productivity. Features AAA accessibility contrast ratings with carefully researched color choices.",
     "version": "0.0.1",
+    "publisher": "mpjdesign",
+    "author": {
+        "name": "Martin Jewiss",
+        "email": "mpjdesign@example.com"
+    },
+    "license": "MPL-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TheFamiliar/wallace"
+    },
+    "bugs": {
+        "url": "https://github.com/TheFamiliar/wallace/issues"
+    },
+    "homepage": "https://github.com/TheFamiliar/wallace#readme",
+    "keywords": [
+        "theme",
+        "color-theme",
+        "dark theme",
+        "accessibility",
+        "AAA",
+        "wcag",
+        "green",
+        "creativity",
+        "productivity",
+        "psychology"
+    ],
     "engines": {
         "vscode": "^1.30.0"
     },
     "categories": [
         "Themes"
     ],
+    "galleryBanner": {
+        "color": "#003100",
+        "theme": "dark"
+    },
     "contributes": {
         "themes": [
             {
