@@ -1019,6 +1019,153 @@
 			}
 		},
 		{
+			"name": "Python - Keywords",
+			"scope": [
+				"keyword.control.python",
+				"keyword.control.flow.python",
+				"keyword.control.import.python",
+				"storage.type.function.python",
+				"storage.type.class.python"
+			],
+			"settings": {
+				"foreground": "#D8BA0F",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Python - Function Definitions",
+			"scope": [
+				"entity.name.function.python",
+				"meta.function.python"
+			],
+			"settings": {
+				"foreground": "#FF95F4"
+			}
+		},
+		{
+			"name": "Python - Function Calls",
+			"scope": [
+				"meta.function-call.generic.python",
+				"meta.function-call.python"
+			],
+			"settings": {
+				"foreground": "#C8ACFF"
+			}
+		},
+		{
+			"name": "Python - Class Definitions",
+			"scope": [
+				"entity.name.type.class.python",
+				"support.type.python"
+			],
+			"settings": {
+				"foreground": "#1BD2B8"
+			}
+		},
+		{
+			"name": "Python - Decorators",
+			"scope": [
+				"entity.name.function.decorator.python",
+				"meta.function.decorator.python",
+				"punctuation.definition.decorator.python"
+			],
+			"settings": {
+				"foreground": "#6EC4FD"
+			}
+		},
+		{
+			"name": "Python - Self & Special Variables",
+			"scope": [
+				"variable.language.special.self.python",
+				"variable.language.python"
+			],
+			"settings": {
+				"foreground": "#D8BA0F",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "Python - Magic Functions",
+			"scope": [
+				"support.function.magic.python"
+			],
+			"settings": {
+				"foreground": "#6EC4FD"
+			}
+		},
+		{
+			"name": "Python - Built-in Functions",
+			"scope": [
+				"support.function.builtin.python"
+			],
+			"settings": {
+				"foreground": "#C8ACFF"
+			}
+		},
+		{
+			"name": "Python - Constants & Built-in Types",
+			"scope": [
+				"constant.language.python",
+				"support.type.python"
+			],
+			"settings": {
+				"foreground": "#FFAA25"
+			}
+		},
+		{
+			"name": "Python - Strings",
+			"scope": [
+				"string.quoted.single.python",
+				"string.quoted.double.python",
+				"string.quoted.docstring.multi.python"
+			],
+			"settings": {
+				"foreground": "#D8BA0F"
+			}
+		},
+		{
+			"name": "Python - F-String Braces",
+			"scope": [
+				"constant.character.format.placeholder.other.python",
+				"punctuation.definition.interpolation.begin.python",
+				"punctuation.definition.interpolation.end.python"
+			],
+			"settings": {
+				"foreground": "#6EC4FD"
+			}
+		},
+		{
+			"name": "Python - Operators",
+			"scope": [
+				"keyword.operator.python",
+				"keyword.operator.logical.python",
+				"keyword.operator.arithmetic.python"
+			],
+			"settings": {
+				"foreground": "#BBBBBB"
+			}
+		},
+		{
+			"name": "Python - Parameters & Variables",
+			"scope": [
+				"variable.parameter.python",
+				"variable.other.python"
+			],
+			"settings": {
+				"foreground": "#FF95F4"
+			}
+		},
+		{
+			"name": "Python - Metaclass",
+			"scope": [
+				"support.type.metaclass.python"
+			],
+			"settings": {
+				"foreground": "#1BD2B8",
+				"fontStyle": "italic"
+			}
+		},
+		{
 			"name": "Markdown - Plain",
 			"scope": [
 				"text.html.markdown",
