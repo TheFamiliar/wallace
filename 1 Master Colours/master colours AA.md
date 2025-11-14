@@ -1,5 +1,4 @@
-# Wallace
-
+# Wallace AA Colours
 ## Colour Palette
 
 + Main Green 76:    85D000
