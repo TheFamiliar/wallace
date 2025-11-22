@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCAG Contrast Analysis - VS Code Theme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Monaco', monospace;
+            background: #1a1a1a;
+            color: #d4d4d4;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #62b232;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #858585;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .theme-section {
+            background: #252526;
+            border: 1px solid #3e3e3e;
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .theme-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3e3e3e;
+        }
+        
+        .bg-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 1px solid #555;
+            flex-shrink: 0;
+        }
+        
+        .theme-info h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #d4d4d4;
+        }
+        
+        .theme-info .bg-label {
+            font-size: 14px;
+            color: #858585;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .color-tests {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .color-test {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid #3e3e3e;
+            transition: all 0.2s;
+        }
+        
+        .color-test:hover {
+            border-color: #555;
+            transform: translateX(4px);
+        }
+        
+        .test-swatch {
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
+        }
+        
+        .test-info {
+            flex: 1;
+            margin-left: 20px;
+        }
+        
+        .test-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .test-hex {
+            font-size: 12px;
+            color: #4ec9b0;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .test-results {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .contrast-ratio {
+            font-size: 14px;
+            font-weight: 600;
+            color: #d4d4d4;
+            min-width: 70px;
+        }
+        
+        .badge {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge.aaa {
+            background: #2ea043;
+            color: white;
+        }
+        
+        .badge.aa {
+            background: #1f6feb;
+            color: white;
+        }
+        
+        .badge.fail {
+            background: #da3633;
+            color: white;
+        }
+        
+        .badge-group {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .legend {
+            background: #252526;
+            border: 1px solid #3e3e3e;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .legend h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #d4d4d4;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        
+        .legend-item {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #858585;
+        }
+        
+        .legend-item strong {
+            color: #d4d4d4;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .summary-card {
+            background: #2d2d2d;
+            border: 1px solid #3e3e3e;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .summary-card h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #62b232;
+        }
+        
+        .summary-stat {
+            font-size: 14px;
+            margin: 8px 0;
+            color: #858585;
+        }
+        
+        .summary-stat strong {
+            color: #d4d4d4;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #3e3e3e;
+            color: #858585;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WCAG Contrast Analysis</h1>
+            <div class="subtitle">VS Code Theme • Restful Forest Green Palette</div>
+        </header>
+        
+        <div class="legend">
+            <h3>WCAG 2.1 Guidelines</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <strong>Normal Text:</strong> AA = 4.5:1 minimum, AAA = 7:1 minimum<br>
+                    <em>(Body copy, UI labels, most code text)</em>
+                </div>
+                <div class="legend-item">
+                    <strong>Large Text:</strong> AA = 3:1 minimum, AAA = 4.5:1 minimum<br>
+                    <em>(18pt+ regular, or 14pt+ bold)</em>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-grid">
+            <!-- Dark -2 Background -->
+            <div class="theme-section">
+                <div class="theme-header">
+                    <div class="bg-swatch" style="background-color: #013900;"></div>
+                    <div class="theme-info">
+                        <h2>Dark -2 Background</h2>
+                        <div class="bg-label">#013900 • oklch(0.30 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="color-tests">
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #b7f0aa;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +4</div>
+                            <div class="test-hex">#b7f0aa</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">10.08:1</div>
+                            <div class="badge-group">
+                                <span class="badge aaa">AAA</span>
+                                <span class="badge aaa">AAA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #97cf8b;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +3</div>
+                            <div class="test-hex">#97cf8b</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">7.30:1</div>
+                            <div class="badge-group">
+                                <span class="badge aaa">AAA</span>
+                                <span class="badge aaa">AAA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #78af6c;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +2</div>
+                            <div class="test-hex">#78af6c</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">5.12:1</div>
+                            <div class="badge-group">
+                                <span class="badge aa">AA</span>
+                                <span class="badge aaa">AAA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #5b904f;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +1</div>
+                            <div class="test-hex">#5b904f</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">3.47:1</div>
+                            <div class="badge-group">
+                                <span class="badge fail">Fail</span>
+                                <span class="badge aa">AA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #3e7232;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Base</div>
+                            <div class="test-hex">#3e7232</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">2.29:1</div>
+                            <div class="badge-group">
+                                <span class="badge fail">Fail</span>
+                                <span class="badge fail">Fail Large</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card" style="margin-top: 24px;">
+                    <h3>Summary</h3>
+                    <div class="summary-stat"><strong>AAA Normal:</strong> 2 colors (Light +4, +3)</div>
+                    <div class="summary-stat"><strong>AA Normal:</strong> 3 colors (includes Light +2)</div>
+                    <div class="summary-stat"><strong>AAA Large:</strong> 3 colors</div>
+                    <div class="summary-stat"><strong>AA Large:</strong> 4 colors</div>
+                </div>
+            </div>
+            
+            <!-- Dark -3 Background -->
+            <div class="theme-section">
+                <div class="theme-header">
+                    <div class="bg-swatch" style="background-color: #001e00;"></div>
+                    <div class="theme-info">
+                        <h2>Dark -3 Background</h2>
+                        <div class="bg-label">#001e00 • oklch(0.20 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="color-tests">
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #b7f0aa;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +4</div>
+                            <div class="test-hex">#b7f0aa</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">13.48:1</div>
+                            <div class="badge-group">
+                                <span class="badge aaa">AAA</span>
+                                <span class="badge aaa">AAA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #97cf8b;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +3</div>
+                            <div class="test-hex">#97cf8b</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">9.75:1</div>
+                            <div class="badge-group">
+                                <span class="badge aaa">AAA</span>
+                                <span class="badge aaa">AAA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #78af6c;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +2</div>
+                            <div class="test-hex">#78af6c</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">6.84:1</div>
+                            <div class="badge-group">
+                                <span class="badge aa">AA</span>
+                                <span class="badge aaa">AAA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #5b904f;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Light +1</div>
+                            <div class="test-hex">#5b904f</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">4.64:1</div>
+                            <div class="badge-group">
+                                <span class="badge aa">AA</span>
+                                <span class="badge aaa">AAA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-test">
+                        <div class="test-swatch" style="background-color: #3e7232;"></div>
+                        <div class="test-info">
+                            <div class="test-name">Base</div>
+                            <div class="test-hex">#3e7232</div>
+                        </div>
+                        <div class="test-results">
+                            <div class="contrast-ratio">3.06:1</div>
+                            <div class="badge-group">
+                                <span class="badge fail">Fail</span>
+                                <span class="badge aa">AA Large</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card" style="margin-top: 24px;">
+                    <h3>Summary</h3>
+                    <div class="summary-stat"><strong>AAA Normal:</strong> 2 colors (Light +4, +3)</div>
+                    <div class="summary-stat"><strong>AA Normal:</strong> 4 colors (includes Light +2, +1)</div>
+                    <div class="summary-stat"><strong>AAA Large:</strong> 4 colors</div>
+                    <div class="summary-stat"><strong>AA Large:</strong> 5 colors (includes Base)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h3>Recommendation: Dark -2</h3>
+                <p style="color: #858585; font-size: 13px; line-height: 1.6;">
+                    Better for less eye strain in very dark environments. Offers 3 colors for normal text (AA+), 
+                    with 2 colors achieving AAA compliance. Good balance for most users.
+                </p>
+            </div>
+            
+            <div class="summary-card">
+                <h3>Recommendation: Dark -3</h3>
+                <p style="color: #858585; font-size: 13px; line-height: 1.6;">
+                    Maximum contrast for accessibility. Offers 4 colors for normal text (AA+), 
+                    with 2 colors achieving AAA compliance. Best for users requiring high contrast.
+                </p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>WCAG 2.1 Level AA is the legal standard in many jurisdictions</p>
+            <p>AAA compliance provides enhanced accessibility for users with vision impairments</p>
+        </footer>
+    </div>
+</body>
+</html>

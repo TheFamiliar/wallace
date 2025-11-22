@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chromatic Palette - AAA Contrast (Light +3 on Dark -2)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+            background: oklch(0.29 0.11 150);
+            padding: 60px 40px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: oklch(0.71 0.11 150);
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+        
+        .bg-info {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-top: 12px;
+        }
+        
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .color-card {
+            background: oklch(0.185 0.11 150);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid oklch(0.35 0.11 150);
+        }
+        
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .color-swatch {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hue-label {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+        }
+        
+        .color-info {
+            padding: 24px;
+        }
+        
+        .color-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: oklch(0.71 0.11 150);
+        }
+        
+        .color-values {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .value-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: oklch(0.24 0.11 150);
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        
+        .value-label {
+            color: oklch(0.60 0.11 150);
+            font-weight: 500;
+            min-width: 60px;
+        }
+        
+        .value-text {
+            color: oklch(0.80 0.11 150);
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 11px;
+        }
+        
+        .contrast-badge {
+            display: inline-block;
+            background: oklch(0.50 0.15 140);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        
+        .green-palette-row {
+            display: flex;
+            gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            margin: 0 auto 60px;
+            max-width: 1200px;
+        }
+        
+        .green-block {
+            flex: 1;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        
+        .green-block:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .green-label {
+            position: absolute;
+            bottom: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .green-block:hover .green-label {
+            opacity: 1;
+        }
+        
+        .green-base-indicator {
+            position: absolute;
+            top: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .palette-section-title {
+            text-align: center;
+            color: oklch(0.71 0.11 150);
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+        
+        .color-wheel {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 80px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: conic-gradient(
+                oklch(0.815 0.11 0),
+                oklch(0.815 0.11 30),
+                oklch(0.815 0.11 60),
+                oklch(0.815 0.11 90),
+                oklch(0.815 0.11 120),
+                oklch(0.815 0.11 150),
+                oklch(0.815 0.11 180),
+                oklch(0.815 0.11 210),
+                oklch(0.815 0.11 240),
+                oklch(0.815 0.11 270),
+                oklch(0.815 0.11 300),
+                oklch(0.815 0.11 330),
+                oklch(0.815 0.11 360)
+            );
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            border-radius: 50%;
+            background: oklch(0.29 0.11 150);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: oklch(0.71 0.11 150);
+            font-size: 18px;
+            font-weight: 300;
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .wheel-label {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            color: oklch(0.60 0.11 150);
+            font-size: 14px;
+            line-height: 1.8;
+            padding-top: 40px;
+            border-top: 1px solid oklch(0.35 0.11 150);
+        }
+        
+        footer strong {
+            color: oklch(0.71 0.11 150);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chromatic Palette - AAA Contrast</h1>
+            <p class="subtitle">30° Hue Increments • Light +3 (L=0.815) on Dark -2 (L=0.29)</p>
+            <p class="bg-info">Background: Dark -2 • oklch(0.29 0.11 150)</p>
+        </header>
+        
+        <div class="palette-section-title">Monochromatic Green Palette (0.105 intervals)</div>
+        
+        <div class="green-palette-row">
+            <!-- Light +4 -->
+            <div class="green-block" style="background: oklch(0.92 0.11 150);">
+                <div class="green-label" style="color: #000;">+4</div>
+            </div>
+            
+            <!-- Light +3 -->
+            <div class="green-block" style="background: oklch(0.815 0.11 150);">
+                <div class="green-label" style="color: #000;">+3</div>
+            </div>
+            
+            <!-- Light +2 -->
+            <div class="green-block" style="background: oklch(0.71 0.11 150);">
+                <div class="green-label" style="color: #000;">+2</div>
+            </div>
+            
+            <!-- Light +1 -->
+            <div class="green-block" style="background: oklch(0.605 0.11 150);">
+                <div class="green-label" style="color: #000;">+1</div>
+            </div>
+            
+            <!-- Base -->
+            <div class="green-block" style="background: oklch(0.50 0.11 150);">
+                <div class="green-base-indicator" style="color: #fff;">BASE</div>
+                <div class="green-label" style="color: #fff;">0.50</div>
+            </div>
+            
+            <!-- Dark -1 -->
+            <div class="green-block" style="background: oklch(0.395 0.11 150);">
+                <div class="green-label" style="color: #fff;">-1</div>
+            </div>
+            
+            <!-- Dark -2 -->
+            <div class="green-block" style="background: oklch(0.29 0.11 150);">
+                <div class="green-label" style="color: #fff;">-2</div>
+            </div>
+            
+            <!-- Dark -3 -->
+            <div class="green-block" style="background: oklch(0.185 0.11 150);">
+                <div class="green-label" style="color: #fff;">-3</div>
+            </div>
+            
+            <!-- Dark -4 -->
+            <div class="green-block" style="background: oklch(0.08 0.11 150);">
+                <div class="green-label" style="color: #fff;">-4</div>
+            </div>
+        </div>
+        
+        <div class="palette-section-title">Full Spectrum Color Wheel</div>
+        
+        <div class="color-wheel">
+            <div class="wheel-center">
+                <div class="wheel-label">360°</div>
+                <div>Full Spectrum</div>
+            </div>
+        </div>
+        
+        <div class="palette-grid">
+            <!-- Red 0° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 0); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">0°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Red</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 0</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#ff9da1</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">255, 157, 161</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Orange 30° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 30); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">30°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Orange</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 30</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#ffb89d</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">255, 184, 157</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Yellow-Orange 60° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 60); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">60°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Yellow-Orange</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 60</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#f4d19c</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">244, 209, 156</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Yellow 90° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 90); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">90°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Yellow</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 90</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#dae79e</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">218, 231, 158</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Yellow-Green 120° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 120); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">120°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Yellow-Green</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 120</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#b8fa93</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">184, 250, 147</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Green 150° (BASE HUE) -->
+            <div class="color-card" style="border: 2px solid oklch(0.71 0.11 150);">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 150); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">150° ★</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Green (Base Hue)</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 150</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#9ee892</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">158, 232, 146</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Cyan 180° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 180); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">180°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Cyan</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 180</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#94fdb0</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">148, 253, 176</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Blue-Cyan 210° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 210); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">210°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Blue-Cyan</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 210</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#98f9dd</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">152, 249, 221</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Blue 240° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 240); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">240°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Blue</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 240</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#a3f0ff</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">163, 240, 255</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Blue-Violet 270° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 270); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">270°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Blue-Violet</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 270</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#c0e2ff</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">192, 226, 255</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Violet 300° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 300); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">300°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Violet</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 300</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#ead3ff</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">234, 211, 255</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Magenta 330° -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0.11 330); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">330°</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Magenta</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0.11 330</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#ffc4f9</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">255, 196, 249</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+            
+            <!-- Grey (Achromatic) -->
+            <div class="color-card">
+                <div class="color-swatch" style="background: oklch(0.815 0 0); color: oklch(0.29 0.11 150);">
+                    <div class="hue-label">Grey</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Grey (Achromatic)</div>
+                    <div class="color-values">
+                        <div class="value-row">
+                            <span class="value-label">OKLCH</span>
+                            <span class="value-text">0.815 0 0</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <span class="value-text">#cbcbcb</span>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">RGB</span>
+                            <span class="value-text">203, 203, 203</span>
+                        </div>
+                    </div>
+                    <div class="contrast-badge">AAA ✓ 7.0:1+</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>AAA Contrast Chromatic Palette</strong></p>
+            <p>12 Chromatic Colors + 1 Achromatic Grey</p>
+            <p>All colors at Light +3 (L=0.815, C=0.11) displayed on Dark -2 background (L=0.29, C=0.11, H=150)</p>
+            <p style="margin-top: 16px;">30° hue increments • Perceptually uniform spacing • All colors meet WCAG AAA (7.0:1+)</p>
+        </footer>
+    </div>
+</body>
+</html>

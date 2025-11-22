@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restful Forest Green - VS Code Theme Palette</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Monaco', 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #62b232;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #858585;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #d4d4d4;
+            border-bottom: 1px solid #3e3e3e;
+            padding-bottom: 12px;
+        }
+        
+        /* Lightness Scale - Horizontal Strip */
+        .lightness-grid {
+            display: flex;
+            gap: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        
+        .lightness-swatch {
+            flex: 1;
+            height: 120px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        
+        .lightness-swatch:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+        }
+        
+        .lightness-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .lightness-card {
+            background: #252526;
+            border: 1px solid #3e3e3e;
+            border-radius: 6px;
+            padding: 16px;
+        }
+        
+        .lightness-card.base {
+            border: 2px solid #62b232;
+            background: #2d2d2d;
+        }
+        
+        .color-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #d4d4d4;
+        }
+        
+        .lightness-card.base .color-name {
+            color: #62b232;
+        }
+        
+        .color-preview {
+            height: 40px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            border: 1px solid #3e3e3e;
+        }
+        
+        .color-values {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        
+        .color-values div {
+            color: #858585;
+        }
+        
+        .color-values .hex {
+            color: #4ec9b0;
+            font-weight: 600;
+        }
+        
+        .color-values .rgb {
+            color: #9cdcfe;
+        }
+        
+        /* Chromatic Palette */
+        .chromatic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .chromatic-card {
+            background: #252526;
+            border: 1px solid #3e3e3e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .chromatic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+        
+        .chromatic-swatch {
+            height: 100px;
+            border-bottom: 1px solid #3e3e3e;
+        }
+        
+        .chromatic-info {
+            padding: 16px;
+        }
+        
+        .hue-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #d4d4d4;
+        }
+        
+        .hue-angle {
+            font-size: 12px;
+            color: #858585;
+            margin-bottom: 12px;
+        }
+        
+        .value-row {
+            font-size: 12px;
+            margin: 4px 0;
+        }
+        
+        .label {
+            color: #858585;
+            display: inline-block;
+            width: 40px;
+        }
+        
+        .value {
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+        
+        .value.hex {
+            color: #4ec9b0;
+        }
+        
+        .value.rgb {
+            color: #9cdcfe;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #3e3e3e;
+            color: #858585;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Restful Forest Green</h1>
+            <div class="subtitle">VS Code Theme Palette • oklch(0.50 0.11 140°)</div>
+        </header>
+        
+        <section class="section">
+            <h2>Lightness Scale</h2>
+            
+            <div class="lightness-grid">
+                <div class="lightness-swatch" style="background-color: #b7f0aa;"></div>
+                <div class="lightness-swatch" style="background-color: #97cf8b;"></div>
+                <div class="lightness-swatch" style="background-color: #78af6c;"></div>
+                <div class="lightness-swatch" style="background-color: #5b904f;"></div>
+                <div class="lightness-swatch" style="background-color: #3e7232;"></div>
+                <div class="lightness-swatch" style="background-color: #215514;"></div>
+                <div class="lightness-swatch" style="background-color: #013900;"></div>
+                <div class="lightness-swatch" style="background-color: #001e00;"></div>
+                <div class="lightness-swatch" style="background-color: #000700;"></div>
+            </div>
+            
+            <div class="lightness-info">
+                <div class="lightness-card">
+                    <div class="color-name">Light +4</div>
+                    <div class="color-preview" style="background-color: #b7f0aa;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#b7f0aa</span></div>
+                        <div><span class="rgb">rgb(183, 240, 170)</span></div>
+                        <div>oklch(0.90 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card">
+                    <div class="color-name">Light +3</div>
+                    <div class="color-preview" style="background-color: #97cf8b;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#97cf8b</span></div>
+                        <div><span class="rgb">rgb(151, 207, 139)</span></div>
+                        <div>oklch(0.80 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card">
+                    <div class="color-name">Light +2</div>
+                    <div class="color-preview" style="background-color: #78af6c;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#78af6c</span></div>
+                        <div><span class="rgb">rgb(120, 175, 108)</span></div>
+                        <div>oklch(0.70 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card">
+                    <div class="color-name">Light +1</div>
+                    <div class="color-preview" style="background-color: #5b904f;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#5b904f</span></div>
+                        <div><span class="rgb">rgb(91, 144, 79)</span></div>
+                        <div>oklch(0.60 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card base">
+                    <div class="color-name">Base ⭐</div>
+                    <div class="color-preview" style="background-color: #3e7232;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#3e7232</span></div>
+                        <div><span class="rgb">rgb(62, 114, 50)</span></div>
+                        <div>oklch(0.50 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card">
+                    <div class="color-name">Dark -1</div>
+                    <div class="color-preview" style="background-color: #215514;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#215514</span></div>
+                        <div><span class="rgb">rgb(33, 85, 20)</span></div>
+                        <div>oklch(0.40 0.11 140)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card">
+                    <div class="color-name">Dark -2</div>
+                    <div class="color-preview" style="background-color: #013900;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#013900</span></div>
+                        <div><span class="rgb">rgb(1, 57, 0)</span></div>
+                        <div>oklch(0.30 0.10 142)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card">
+                    <div class="color-name">Dark -3</div>
+                    <div class="color-preview" style="background-color: #001e00;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#001e00</span></div>
+                        <div><span class="rgb">rgb(0, 30, 0)</span></div>
+                        <div>oklch(0.21 0.07 143)</div>
+                    </div>
+                </div>
+                
+                <div class="lightness-card">
+                    <div class="color-name">Dark -4</div>
+                    <div class="color-preview" style="background-color: #000700;"></div>
+                    <div class="color-values">
+                        <div><span class="hex">#000700</span></div>
+                        <div><span class="rgb">rgb(0, 7, 0)</span></div>
+                        <div>oklch(0.11 0.04 143)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Chromatic Palette (30° intervals)</h2>
+            
+            <div class="chromatic-grid">
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #944560;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Red</div>
+                        <div class="hue-angle">0° • oklch(0.50 0.11 0)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#944560</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(148, 69, 96)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #97473c;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Orange</div>
+                        <div class="hue-angle">30° • oklch(0.50 0.11 30)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#97473c</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(151, 71, 60)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #8f5110;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Yellow</div>
+                        <div class="hue-angle">60° • oklch(0.50 0.11 60)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#8f5110</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(143, 81, 16)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #7b5f00;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Chartreuse</div>
+                        <div class="hue-angle">90° • oklch(0.50 0.10 88)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#7b5f00</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(123, 95, 0)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #5b6b13;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Green</div>
+                        <div class="hue-angle">120° • oklch(0.50 0.11 120)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#5b6b13</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(91, 107, 19)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #2a743f;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Cyan-Green</div>
+                        <div class="hue-angle">150° • oklch(0.50 0.11 150)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#2a743f</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(42, 116, 63)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #007665;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Cyan</div>
+                        <div class="hue-angle">180° • oklch(0.51 0.09 178)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#007665</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(0, 118, 101)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #007283;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Sky Blue</div>
+                        <div class="hue-angle">210° • oklch(0.51 0.09 213)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#007283</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(0, 114, 131)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #0d699b;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Blue</div>
+                        <div class="hue-angle">240° • oklch(0.50 0.11 240)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#0d699b</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(13, 105, 155)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #4b5ea1;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Purple</div>
+                        <div class="hue-angle">270° • oklch(0.50 0.11 270)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#4b5ea1</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(75, 94, 161)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #6d5298;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Magenta</div>
+                        <div class="hue-angle">300° • oklch(0.50 0.11 300)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#6d5298</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(109, 82, 152)</span></div>
+                    </div>
+                </div>
+                
+                <div class="chromatic-card">
+                    <div class="chromatic-swatch" style="background-color: #854980;"></div>
+                    <div class="chromatic-info">
+                        <div class="hue-name">Pink</div>
+                        <div class="hue-angle">330° • oklch(0.50 0.11 330)</div>
+                        <div class="value-row"><span class="label">HEX</span><span class="value hex">#854980</span></div>
+                        <div class="value-row"><span class="label">RGB</span><span class="value rgb">rgb(133, 73, 128)</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Generated using Oklch color space for perceptual uniformity</p>
+            <p>Base: oklch(0.50 0.11 140°) • Chroma: 0.11 • All colors in sRGB gamut</p>
+        </footer>
+    </div>
+</body>
+</html>
