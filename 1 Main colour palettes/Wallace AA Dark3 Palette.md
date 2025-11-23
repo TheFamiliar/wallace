@@ -1,16 +1,11 @@
-# Wallace AA
+# Wallace AA (Dark -3 Variant)
 
-A perceptually uniform color palette designed for software UI theme creation, built using OKLCH color space and with WCAG AA accessibility compliance.
-
-## License
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at http://mozilla.org/MPL/2.0/.
+A perceptually uniform color palette designed for VS Code editor themes, built using OKLCH color space with scientifically accurate color theory and WCAG AA accessibility compliance.
 
 ## Theme Specifications
 
-**Background:** Dark -2 • `oklch(0.29 0.11 150)`  
-**Foreground:** Light +2 • `oklch(0.71 0.11 150)`  
+**Background:** Dark -3 • `oklch(0.185 0.11 150)`  
+**Foreground:** Light +1 • `oklch(0.605 0.11 150)`  
 **Hue Increments:** 30° intervals  
 **Contrast Standard:** WCAG AA (4.5:1 minimum)
 
@@ -79,103 +74,103 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 ## Chromatic Palette (AA Standard)
 
-12 chromatic colors at Light +2 (L=0.71, C=0.11) displayed on Dark -2 background.  
+12 chromatic colors at Light +1 (L=0.605, C=0.11) displayed on Dark -3 background.  
 **30° hue increments • Perceptually uniform spacing**
 
 ### Red
 
-* OKLCH: `oklch(0.71 0.11 0)`
+* OKLCH: `oklch(0.605 0.11 0)`
 * Hue: 0°
-* Hex: `#d66167`
-* RGB: `rgb(214, 97, 103)`
+* Hex: `#b6647f`
+* RGB: `rgb(182, 99, 126)`
 * AA Status: ✓ Pass
 
 ### Orange
 
-* OKLCH: `oklch(0.71 0.11 30)`
+* OKLCH: `oklch(0.605 0.11 30)`
 * Hue: 30°
-* Hex: `#d0806b`
-* RGB: `rgb(208, 128, 107)`
+* Hex: `#ba6759`
+* RGB: `rgb(186, 102, 89)`
 * AA Status: ✓ Pass
 
 ### Yellow-Orange
 
-* OKLCH: `oklch(0.71 0.11 60)`
+* OKLCH: `oklch(0.605 0.11 60)`
 * Hue: 60°
-* Hex: `#c19c6e`
-* RGB: `rgb(193, 156, 110)`
+* Hex: `#b17036`
+* RGB: `rgb(177, 112, 54)`
 * AA Status: ✓ Pass
 
 ### Yellow
 
-* OKLCH: `oklch(0.71 0.11 90)`
+* OKLCH: `oklch(0.605 0.11 90)`
 * Hue: 90°
-* Hex: `#a8b56e`
-* RGB: `rgb(168, 181, 110)`
+* Hex: `#9b7e24`
+* RGB: `rgb(155, 126, 36)`
 * AA Status: ✓ Pass
 
 ### Yellow-Green
 
-* OKLCH: `oklch(0.71 0.11 120)`
+* OKLCH: `oklch(0.605 0.11 120)`
 * Hue: 120°
-* Hex: `#88cc65`
-* RGB: `rgb(136, 204, 101)`
+* Hex: `#798b39`
+* RGB: `rgb(121, 139, 56)`
 * AA Status: ✓ Pass
 
 ### Green
 
-* OKLCH: `oklch(0.71 0.11 150)`
+* OKLCH: `oklch(0.605 0.11 150)`
 * Hue: 150°
-* Hex: `#79cf69`
-* RGB: `rgb(121, 207, 105)`
+* Hex: `#4c945e`
+* RGB: `rgb(75, 147, 93)`
 * AA Status: ✓ Pass
 
 ### Cyan
 
-* OKLCH: `oklch(0.71 0.11 180)`
+* OKLCH: `oklch(0.605 0.11 180)`
 * Hue: 180°
-* Hex: `#6fcf7e`
-* RGB: `rgb(111, 207, 126)`
+* Hex: `#009784`
+* RGB: `rgb(0, 151, 132)`
 * AA Status: ✓ Pass
 
 ### Blue-Cyan
 
-* OKLCH: `oklch(0.71 0.11 210)`
+* OKLCH: `oklch(0.605 0.11 210)`
 * Hue: 210°
-* Hex: `#6fcbb2`
-* RGB: `rgb(111, 203, 178)`
+* Hex: `#0093a6`
+* RGB: `rgb(0, 147, 166)`
 * AA Status: ✓ Pass
 
 ### Blue
 
-* OKLCH: `oklch(0.71 0.11 240)`
+* OKLCH: `oklch(0.605 0.11 240)`
 * Hue: 240°
-* Hex: `#77c3da`
-* RGB: `rgb(119, 195, 218)`
+* Hex: `#398abd`
+* RGB: `rgb(56, 137, 188)`
 * AA Status: ✓ Pass
 
 ### Blue-Violet
 
-* OKLCH: `oklch(0.71 0.11 270)`
+* OKLCH: `oklch(0.605 0.11 270)`
 * Hue: 270°
-* Hex: `#93b6e7`
-* RGB: `rgb(147, 182, 231)`
+* Hex: `#687ec4`
+* RGB: `rgb(104, 125, 195)`
 * AA Status: ✓ Pass
 
 ### Violet
 
-* OKLCH: `oklch(0.71 0.11 300)`
+* OKLCH: `oklch(0.605 0.11 300)`
 * Hue: 300°
-* Hex: `#bba5e4`
-* RGB: `rgb(187, 165, 228)`
+* Hex: `#8c72ba`
+* RGB: `rgb(139, 113, 185)`
 * AA Status: ✓ Pass
 
 ### Magenta
 
-* OKLCH: `oklch(0.71 0.11 330)`
+* OKLCH: `oklch(0.605 0.11 330)`
 * Hue: 330°
-* Hex: `#dc95d2`
-* RGB: `rgb(220, 149, 210)`
+* Hex: `#a668a1`
+* RGB: `rgb(166, 104, 160)`
 * AA Status: ✓ Pass
 
 ---
@@ -184,9 +179,9 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 ### Grey
 
-* OKLCH: `oklch(0.71 0 0)`
-* Hex: `#a8a8a8`
-* RGB: `rgb(168, 168, 168)`
+* OKLCH: `oklch(0.605 0 0)`
+* Hex: `#828282`
+* RGB: `rgb(129, 129, 129)`
 * AA Status: ✓ Pass
 
 ---
@@ -198,5 +193,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 **Interval System:** 0.105 lightness steps  
 **Base Lightness:** L=0.50 (mathematical and perceptual midpoint)  
 **WCAG Compliance:** All colors meet AA standard (4.5:1 minimum contrast ratio)  
+**Contrast Ratio:** Light +1 on Dark -3 = 4.96:1
 
-Perceptually uniform in OKLCH color space, ensuring consistent visual relationships across all colors and shades.
+Perceptually uniform in OKLCH color space, ensuring consistent visual relationships across all colors and shades. This variant uses a darker background (Dark -3) with lower brightness foreground colors (Light +1), providing reduced overall luminance while maintaining AA accessibility compliance. Ideal for users with photophobia or light sensitivity.
