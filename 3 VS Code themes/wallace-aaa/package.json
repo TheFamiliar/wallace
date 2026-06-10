@@ -1,10 +1,11 @@
 {
-    "name": "wallace-aaa",
-    "displayName": "Wallace-AAA",
-    "description": "Colour theme based on psychology research into best colours for creativity. Colour contrast meets AAA accessibility rating.",
-    "version": "0.0.1",
+    "name": "wallace-themes",
+    "displayName": "Wallace Themes",
+    "description": "Forest-green colour themes based on psychology research into the best colours for creativity. Two WCAG-compliant variants: Wallace AA (4.5:1 contrast) and Wallace AAA (7:1 contrast).",
+    "version": "2.0.0",
+    "publisher": "martin-jewiss",
     "engines": {
-        "vscode": "^1.30.0"
+        "vscode": "^1.72.0"
     },
     "categories": [
         "Themes"
@@ -12,10 +13,18 @@
     "contributes": {
         "themes": [
             {
+                "label": "Wallace AA",
+                "uiTheme": "vs-dark",
+                "path": "./themes/Wallace AA-color-theme.json"
+            },
+            {
                 "label": "Wallace AAA",
                 "uiTheme": "vs-dark",
                 "path": "./themes/Wallace AAA-color-theme.json"
             }
+        ],
+        "markdown.previewStyles": [
+            "./markdown-preview.css"
         ]
     }
 }

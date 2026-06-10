@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wallace palette comparison · AA (Light +2) vs Dark -3 (Light +1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Theme palette (Wallace AA · chromatic at Light +2 · bg Dark -2) */
+    --theme-bg:#00360c;       /* Dark -2 */
+    --theme-fg:#6fb77f;       /* Light +2 */
+    /* Dark -3 variant (chromatic at Light +1 · bg Dark -3) */
+    --dark3-bg:#001901;       /* Dark -3 */
+    --dark3-fg:#4d955f;       /* Light +1 */
+    --page:#001202;
+    --line:#005522;           /* Dark -1 */
+    --muted:#2b7440;          /* Base */
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--page);
+    font-family:"IBM Plex Serif",Georgia,serif;
+    color:var(--theme-fg);
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+    padding:40px 28px 80px;
+  }
+  .wrap{max-width:980px;margin:0 auto}
+
+  h1{font-family:"Hanken Grotesk",sans-serif;font-weight:300;color:#3fb8a4;
+    font-size:30px;letter-spacing:.01em;margin:0 0 6px}
+  .lede{color:var(--muted);max-width:70ch;margin:0 0 28px;font-size:15px}
+  .lede b{color:var(--theme-fg);font-weight:500}
+
+  /* Column headers */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .colhead{
+    font-family:"Hanken Grotesk",sans-serif;font-weight:400;
+    border-radius:10px 10px 0 0;padding:16px 18px 14px;
+    position:sticky;top:0;z-index:2;
+  }
+  .colhead .t{font-size:16px;margin:0 0 3px}
+  .colhead .s{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.02em;opacity:.85;margin:0}
+  .colhead.theme{background:var(--theme-bg);color:var(--theme-fg);border:1px solid var(--line);border-bottom:none}
+  .colhead.dark3{background:var(--dark3-bg);color:var(--dark3-fg);border:1px solid #003c11;border-bottom:none}
+
+  /* Section label spanning both columns */
+  .section{grid-column:1 / -1;font-family:"Hanken Grotesk",sans-serif;font-weight:400;
+    color:var(--muted);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    margin:26px 0 2px;padding-left:2px}
+
+  /* Swatch cells */
+  .cell{padding:16px 18px;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .cell.theme{background:var(--theme-bg);border-color:var(--line)}
+  .cell.dark3{background:var(--dark3-bg);border-color:#003c11}
+  .row-first .cell.theme{border-top:1px solid var(--line)}
+  .row-first .cell.dark3{border-top:1px solid #003c11}
+  .row-last  .cell.theme{border-bottom:1px solid var(--line);border-radius:0 0 0 10px}
+  .row-last  .cell.dark3{border-bottom:1px solid #003c11;border-radius:0 0 10px 0}
+
+  .name{font-family:"Hanken Grotesk",sans-serif;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 8px;display:flex;
+    justify-content:space-between;align-items:center;gap:8px}
+  .role{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.04em;
+    text-transform:none;color:#7a7a55;border:1px solid #3a4a2a;border-radius:20px;padding:2px 7px}
+
+  .sample{display:flex;align-items:center;gap:14px}
+  .chip{flex:0 0 auto;width:34px;height:34px;border-radius:7px;border:1px solid rgba(255,255,255,.12)}
+  .txt{font-size:19px;line-height:1.2}
+  .txt small{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.03em;margin-top:3px;opacity:.95}
+
+  .note{grid-column:1 / -1;color:var(--muted);font-size:13px;margin:18px 2px 0;line-height:1.55}
+  .note code{font-family:"IBM Plex Mono",monospace;color:var(--theme-fg);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Wallace palette comparison</h1>
+  <p class="lede">Equivalent colours from the two palettes, each shown as text on <b>its own intended dark-green background</b> so you see it as designed. <b>Left</b> = the palette your <code style="font-family:inherit">Wallace.css</code> theme uses (chromatic at Light +2 on Dark -2). <b>Right</b> = the official Dark -3 variant (chromatic accents at Light +1, L 0.6086, on Dark -3 — lower luminance, for light sensitivity; every accent verified ≥ 4.5:1).</p>
+
+  <div class="grid">
+    <!-- Column headers -->
+    <div class="colhead theme">
+      <p class="t">Theme · Wallace AA</p>
+      <p class="s">chromatic Light +2 (L 0.71) · bg Dark -2 #00360c</p>
+    </div>
+    <div class="colhead dark3">
+      <p class="t">Dark -3 variant · official</p>
+      <p class="s">chromatic accents at Light +1 (L 0.6086) · bg Dark -3 #001901</p>
+    </div>
+
+    <!-- ============ CHROMATIC ============ -->
+    <div class="section">Chromatic accents — these differ between palettes</div>
+
+    <!-- Red -->
+    <div class="cell theme row-first">
+      <p class="name">Red</p>
+      <div class="sample"><span class="chip" style="background:#d9849f"></span>
+        <span class="txt" style="color:#d9849f">The quick brown fox<small>#d9849f</small></span></div>
+    </div>
+    <div class="cell dark3 row-first">
+      <p class="name">Red</p>
+      <div class="sample"><span class="chip" style="background:#b86580"></span>
+        <span class="txt" style="color:#b86580">The quick brown fox<small>#b86580</small></span></div>
+    </div>
+
+    <!-- Orange -->
+    <div class="cell theme">
+      <p class="name">Orange</p>
+      <div class="sample"><span class="chip" style="background:#de8678"></span>
+        <span class="txt" style="color:#de8678">The quick brown fox<small>#de8678</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Orange</p>
+      <div class="sample"><span class="chip" style="background:#bc685b"></span>
+        <span class="txt" style="color:#bc685b">The quick brown fox<small>#bc685b</small></span></div>
+    </div>
+
+    <!-- Yellow-Orange -->
+    <div class="cell theme">
+      <p class="name">Yellow-Orange <span class="role">was headings</span></p>
+      <div class="sample"><span class="chip" style="background:#d49057"></span>
+        <span class="txt" style="color:#d49057">The quick brown fox<small>#d49057</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Yellow-Orange</p>
+      <div class="sample"><span class="chip" style="background:#b27238"></span>
+        <span class="txt" style="color:#b27238">The quick brown fox<small>#b27238</small></span></div>
+    </div>
+
+    <!-- Yellow -->
+    <div class="cell theme">
+      <p class="name">Yellow</p>
+      <div class="sample"><span class="chip" style="background:#bc9e49"></span>
+        <span class="txt" style="color:#bc9e49">The quick brown fox<small>#bc9e49</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Yellow</p>
+      <div class="sample"><span class="chip" style="background:#9c7f26"></span>
+        <span class="txt" style="color:#9c7f26">The quick brown fox<small>#9c7f26</small></span></div>
+    </div>
+
+    <!-- Yellow-Green -->
+    <div class="cell theme">
+      <p class="name">Yellow-Green</p>
+      <div class="sample"><span class="chip" style="background:#99ac5a"></span>
+        <span class="txt" style="color:#99ac5a">The quick brown fox<small>#99ac5a</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Yellow-Green</p>
+      <div class="sample"><span class="chip" style="background:#7a8c3a"></span>
+        <span class="txt" style="color:#7a8c3a">The quick brown fox<small>#7a8c3a</small></span></div>
+    </div>
+
+    <!-- Green -->
+    <div class="cell theme">
+      <p class="name">Green</p>
+      <div class="sample"><span class="chip" style="background:#6fb77f"></span>
+        <span class="txt" style="color:#6fb77f">The quick brown fox<small>#6fb77f</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Green</p>
+      <div class="sample"><span class="chip" style="background:#4d955f"></span>
+        <span class="txt" style="color:#4d955f">The quick brown fox<small>#4d955f</small></span></div>
+    </div>
+
+    <!-- Cyan -->
+    <div class="cell theme">
+      <p class="name">Cyan <span class="role">headings</span></p>
+      <div class="sample"><span class="chip" style="background:#3fb8a4"></span>
+        <span class="txt" style="color:#3fb8a4">The quick brown fox<small>#3fb8a4</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Cyan</p>
+      <div class="sample"><span class="chip" style="background:#039885"></span>
+        <span class="txt" style="color:#039885">The quick brown fox<small>#039885</small></span></div>
+    </div>
+
+    <!-- Blue-Cyan -->
+    <div class="cell theme">
+      <p class="name">Blue-Cyan</p>
+      <div class="sample"><span class="chip" style="background:#34b4c7"></span>
+        <span class="txt" style="color:#34b4c7">The quick brown fox<small>#34b4c7</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Blue-Cyan</p>
+      <div class="sample"><span class="chip" style="background:#0094a7"></span>
+        <span class="txt" style="color:#0094a7">The quick brown fox<small>#0094a7</small></span></div>
+    </div>
+
+    <!-- Blue -->
+    <div class="cell theme">
+      <p class="name">Blue <span class="role">links</span></p>
+      <div class="sample"><span class="chip" style="background:#5baadf"></span>
+        <span class="txt" style="color:#5baadf">The quick brown fox<small>#5baadf</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Blue</p>
+      <div class="sample"><span class="chip" style="background:#3a8bbe"></span>
+        <span class="txt" style="color:#3a8bbe">The quick brown fox<small>#3a8bbe</small></span></div>
+    </div>
+
+    <!-- Blue-Violet -->
+    <div class="cell theme">
+      <p class="name">Blue-Violet <span class="role">link hover</span></p>
+      <div class="sample"><span class="chip" style="background:#879ee7"></span>
+        <span class="txt" style="color:#879ee7">The quick brown fox<small>#879ee7</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Blue-Violet</p>
+      <div class="sample"><span class="chip" style="background:#697fc5"></span>
+        <span class="txt" style="color:#697fc5">The quick brown fox<small>#697fc5</small></span></div>
+    </div>
+
+    <!-- Violet -->
+    <div class="cell theme">
+      <p class="name">Violet <span class="role">inline code</span></p>
+      <div class="sample"><span class="chip" style="background:#ac91dc"></span>
+        <span class="txt" style="color:#ac91dc">The quick brown fox<small>#ac91dc</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Violet</p>
+      <div class="sample"><span class="chip" style="background:#8d73bb"></span>
+        <span class="txt" style="color:#8d73bb">The quick brown fox<small>#8d73bb</small></span></div>
+    </div>
+
+    <!-- Magenta -->
+    <div class="cell theme">
+      <p class="name">Magenta</p>
+      <div class="sample"><span class="chip" style="background:#c888c2"></span>
+        <span class="txt" style="color:#c888c2">The quick brown fox<small>#c888c2</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Magenta</p>
+      <div class="sample"><span class="chip" style="background:#a869a2"></span>
+        <span class="txt" style="color:#a869a2">The quick brown fox<small>#a869a2</small></span></div>
+    </div>
+
+    <!-- Grey -->
+    <div class="cell theme row-last">
+      <p class="name">Grey · achromatic</p>
+      <div class="sample"><span class="chip" style="background:#a1a1a1"></span>
+        <span class="txt" style="color:#a1a1a1">The quick brown fox<small>#a1a1a1</small></span></div>
+    </div>
+    <div class="cell dark3 row-last">
+      <p class="name">Grey · achromatic</p>
+      <div class="sample"><span class="chip" style="background:#838383"></span>
+        <span class="txt" style="color:#838383">The quick brown fox<small>#838383</small></span></div>
+    </div>
+
+    <!-- ============ MONO GREENS ============ -->
+    <div class="section">Monochromatic greens — identical in both palettes</div>
+
+    <!-- Light +4 -->
+    <div class="cell theme row-first">
+      <p class="name">Light +4</p>
+      <div class="sample"><span class="chip" style="background:#b4ffc3"></span>
+        <span class="txt" style="color:#b4ffc3">The quick brown fox<small>#b4ffc3</small></span></div>
+    </div>
+    <div class="cell dark3 row-first">
+      <p class="name">Light +4</p>
+      <div class="sample"><span class="chip" style="background:#b4ffc3"></span>
+        <span class="txt" style="color:#b4ffc3">The quick brown fox<small>#b4ffc3</small></span></div>
+    </div>
+
+    <!-- Light +3 -->
+    <div class="cell theme">
+      <p class="name">Light +3 <span class="role">strong / bold</span></p>
+      <div class="sample"><span class="chip" style="background:#91daa0"></span>
+        <span class="txt" style="color:#91daa0">The quick brown fox<small>#91daa0</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Light +3</p>
+      <div class="sample"><span class="chip" style="background:#91daa0"></span>
+        <span class="txt" style="color:#91daa0">The quick brown fox<small>#91daa0</small></span></div>
+    </div>
+
+    <!-- Light +2 -->
+    <div class="cell theme">
+      <p class="name">Light +2 <span class="role">theme body text</span></p>
+      <div class="sample"><span class="chip" style="background:#6fb77f"></span>
+        <span class="txt" style="color:#6fb77f">The quick brown fox<small>#6fb77f</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Light +2</p>
+      <div class="sample"><span class="chip" style="background:#6fb77f"></span>
+        <span class="txt" style="color:#6fb77f">The quick brown fox<small>#6fb77f</small></span></div>
+    </div>
+
+    <!-- Light +1 -->
+    <div class="cell theme">
+      <p class="name">Light +1</p>
+      <div class="sample"><span class="chip" style="background:#4d955f"></span>
+        <span class="txt" style="color:#4d955f">The quick brown fox<small>#4d955f</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Light +1 <span class="role">dark-3 body text</span></p>
+      <div class="sample"><span class="chip" style="background:#4d955f"></span>
+        <span class="txt" style="color:#4d955f">The quick brown fox<small>#4d955f</small></span></div>
+    </div>
+
+    <!-- Base -->
+    <div class="cell theme">
+      <p class="name">Base <span class="role">muted</span></p>
+      <div class="sample"><span class="chip" style="background:#2b7440"></span>
+        <span class="txt" style="color:#2b7440">The quick brown fox<small>#2b7440</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Base</p>
+      <div class="sample"><span class="chip" style="background:#2b7440"></span>
+        <span class="txt" style="color:#2b7440">The quick brown fox<small>#2b7440</small></span></div>
+    </div>
+
+    <!-- Dark -1 -->
+    <div class="cell theme">
+      <p class="name">Dark -1 <span class="role">borders / quote bg</span></p>
+      <div class="sample"><span class="chip" style="background:#005522"></span>
+        <span class="txt" style="color:#005522">The quick brown fox<small>#005522</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Dark -1</p>
+      <div class="sample"><span class="chip" style="background:#005522"></span>
+        <span class="txt" style="color:#005522">The quick brown fox<small>#005522</small></span></div>
+    </div>
+
+    <!-- Dark -2 -->
+    <div class="cell theme">
+      <p class="name">Dark -2 <span class="role">theme background</span></p>
+      <div class="sample"><span class="chip" style="background:#00360c"></span>
+        <span class="txt" style="color:#00360c">The quick brown fox<small>#00360c</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Dark -2 <span class="role">raised surfaces</span></p>
+      <div class="sample"><span class="chip" style="background:#00360c"></span>
+        <span class="txt" style="color:#00360c">The quick brown fox<small>#00360c</small></span></div>
+    </div>
+
+    <!-- Dark -3 -->
+    <div class="cell theme">
+      <p class="name">Dark -3 <span class="role">code blocks</span></p>
+      <div class="sample"><span class="chip" style="background:#001901"></span>
+        <span class="txt" style="color:#001901">The quick brown fox<small>#001901</small></span></div>
+    </div>
+    <div class="cell dark3">
+      <p class="name">Dark -3 <span class="role">dark-3 background</span></p>
+      <div class="sample"><span class="chip" style="background:#001901"></span>
+        <span class="txt" style="color:#001901">The quick brown fox<small>#001901</small></span></div>
+    </div>
+
+    <!-- Dark -4 -->
+    <div class="cell theme row-last">
+      <p class="name">Dark -4</p>
+      <div class="sample"><span class="chip" style="background:#000300"></span>
+        <span class="txt" style="color:#000300">The quick brown fox<small>#000300</small></span></div>
+    </div>
+    <div class="cell dark3 row-last">
+      <p class="name">Dark -4 <span class="role">recessed / code blocks</span></p>
+      <div class="sample"><span class="chip" style="background:#000300"></span>
+        <span class="txt" style="color:#000300">The quick brown fox<small>#000300</small></span></div>
+    </div>
+
+    <p class="note">Each colour sits on the background it was designed for, so the two columns are not on an identical field — that's deliberate: the Dark -3 variant pairs lower-luminance accents (Light +1) with a darker ground for reduced overall brightness. The <b>monochromatic green ramp is shared</b> and shown in full (Light +4 through Dark -4), so those rows show the same hex in both columns; only the role each plays differs (badges).</p>
+  </div>
+</div>
+</body>
+</html>

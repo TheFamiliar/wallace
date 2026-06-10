@@ -1,0 +1,536 @@
+/*
+   This document has been created with Marked.app <http://markedapp.com>, Copyright 2011 Brett Terpstra
+   Please leave this notice in place, along with any additional credits below.
+   ---------------------------------------------------------------
+   Title: Forge Paper
+   Author: Martin Jewiss
+   Description: A warm editorial theme on aged paper — Fraunces serif headings,
+                Hanken Grotesk body, IBM Plex Mono accents, and a gold spine.
+                Adapted from the "A or B" sales-aid design language.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+/* ---------------------------------------------------------------
+   Palette (mirrors the source design's CSS custom properties)
+   --------------------------------------------------------------- */
+:root {
+    --paper: #f6efe2;
+    --paper-2: #fffdf8;
+    --paper-cool: #f1ebdc;
+    --ink: #2a2417;
+    --ink-soft: #544c39;
+    --muted: #857a62;
+    --muted-cool: #9a9282;
+    --line: #e7ddc9;
+    --line-cool: #dfd8c6;
+    --gold: #cf962a;
+    --gold-lite: #e6b85a;
+    --gold-deep: #9a6710;
+    --grey: #a39c8a;
+    --grey-deep: #6b6555;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    background: var(--paper);
+    color: var(--ink);
+    font: normal 16px/1.55 "Hanken Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+html>body {
+    font-size: 16px;
+}
+
+body,p,td,div {
+    color: var(--ink);
+    font-family: "Hanken Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    word-wrap: break-word;
+}
+
+/* ---------------------------------------------------------------
+   Headings — Fraunces serif, tight tracking, gold-deep italics
+   --------------------------------------------------------------- */
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Fraunces", Georgia, serif;
+    color: var(--ink);
+    letter-spacing: -.012em;
+    line-height: 1.15;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 2.625em;
+    letter-spacing: -.018em;
+    line-height: 1.08;
+    margin: .35em 0 .4em;
+}
+
+h1 em {
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 500;
+}
+
+h2 {
+    font-weight: 500;
+    font-size: 1.75em;
+    margin: 1.4em 0 .5em;
+    padding-bottom: .3em;
+}
+
+/* gold rule under section headings — echoes the scenario-number dash */
+h2::after {
+    content: "";
+    display: block;
+    width: 44px;
+    height: 1px;
+    background: var(--gold);
+    margin-top: .45em;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.4em;
+    margin: 1.4em 0 .5em;
+}
+
+h4 {
+    font-weight: 500;
+    font-size: 1.18em;
+    margin: 1.4em 0 .5em;
+}
+
+h5 {
+    font-weight: 600;
+    font-size: 1.05em;
+    margin: 1.4em 0 .4em;
+}
+
+/* h6 styled as a mono "kicker" label — the design's signature eyebrow */
+h6 {
+    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+    font-weight: 500;
+    font-size: .72em;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin: 1.8em 0 .6em;
+}
+
+p {
+    color: var(--ink-soft);
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 1.1em 0;
+}
+
+p b,p strong,li b,li strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------------
+   Links — gold, with the source's hover transition
+   --------------------------------------------------------------- */
+a {
+    -webkit-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+    color: var(--gold-deep);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(207,150,42,.4);
+}
+
+a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+}
+
+.footnote {
+    color: var(--gold-deep);
+    font-size: .8em;
+    vertical-align: super;
+}
+
+#wrapper img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* ---------------------------------------------------------------
+   Lists — gold dot bullets, matching the option cards
+   --------------------------------------------------------------- */
+ul {
+    list-style: none;
+    padding-left: 1.5em;
+}
+
+ul li {
+    position: relative;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: .5em 0;
+}
+
+ul li::before {
+    content: "";
+    position: absolute;
+    left: -1.2em;
+    top: .55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+ol {
+    padding-left: 1.6em;
+}
+
+ol li {
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: .5em 0;
+    padding-left: .25em;
+}
+
+li li {
+    font-size: 100%;
+}
+
+li p {
+    font-size: 100%;
+    margin: .5em 0;
+}
+
+li > p:first-child {
+    margin: 0;
+}
+
+ul ul,ul ol,ol ol,ol ul {
+    margin-bottom: .4em;
+    margin-top: .4em;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+dt {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* ---------------------------------------------------------------
+   Blockquote — the gold-spine "anchor / callout" treatment
+   --------------------------------------------------------------- */
+blockquote {
+    margin: 1.5em 0;
+    padding: 14px 20px;
+    background: var(--paper-2);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+}
+
+blockquote p {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.05em;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: .4em 0;
+}
+
+blockquote p b,blockquote p strong {
+    color: var(--gold-deep);
+}
+
+/* ---------------------------------------------------------------
+   Horizontal rule
+   --------------------------------------------------------------- */
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--line);
+    margin: 2.4em 0;
+}
+
+/* ---------------------------------------------------------------
+   Code — mono, on a soft paper-cool field
+   --------------------------------------------------------------- */
+code {
+    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: .88em;
+    background: var(--paper-cool);
+    color: var(--gold-deep);
+    padding: .12em .4em;
+    border-radius: 4px;
+    border: 1px solid var(--line-cool);
+}
+
+pre {
+    background: var(--paper-cool);
+    border: 1px solid var(--line-cool);
+    border-radius: 10px;
+    padding: 16px 18px;
+    overflow: auto;
+    line-height: 1.5;
+}
+
+pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--ink-soft);
+    font-size: .85em;
+}
+
+.poetry pre {
+    display: block;
+    font-family: "Fraunces", Georgia, serif !important;
+    font-size: 110% !important;
+    font-style: italic;
+    line-height: 1.6em;
+    margin-left: 1em;
+}
+
+.poetry pre code {
+    font-family: "Fraunces", Georgia, serif !important;
+}
+
+/* ---------------------------------------------------------------
+   Tables — paper rows, gold-tinted header, mirrors scorecard tone
+   --------------------------------------------------------------- */
+caption,col,colgroup,table,tbody,td,tfoot,th,thead,tr {
+    border-spacing: 0;
+}
+
+table {
+    border: 1px solid var(--line);
+    border-collapse: collapse;
+    display: table;
+    empty-cells: hide;
+    margin: 1em 0 1.6em;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+caption {
+    display: table-caption;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+col { display: table-column; }
+colgroup { display: table-column-group; }
+tbody { display: table-row-group; }
+tfoot { display: table-footer-group; }
+thead { display: table-header-group; }
+td,th { display: table-cell; }
+tr { display: table-row; }
+
+table th,table td {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: .55em 1em;
+    border-bottom: 1px solid var(--line);
+}
+
+table thead {
+    background: rgba(207,150,42,.12);
+    border-bottom: 1px solid rgba(207,150,42,.3);
+}
+
+table th {
+    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+    font-weight: 500;
+    font-size: .78em;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    text-align: left;
+}
+
+table tbody { background: var(--paper-2); }
+
+table tfoot {
+    background: rgba(207,150,42,.12);
+    border-top: 1px solid rgba(207,150,42,.3);
+}
+
+table tr:nth-child(even) td {
+    background: rgba(231,221,201,.35);
+}
+
+/* ---------------------------------------------------------------
+   Figures
+   --------------------------------------------------------------- */
+figure {
+    display: inline-block;
+    position: relative;
+    margin: 1em 0 2em;
+}
+
+figcaption {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .78em;
+    letter-spacing: .04em;
+    text-align: center;
+    color: var(--muted);
+    margin-top: .6em;
+}
+
+/* ---------------------------------------------------------------
+   Sup / sub / footnotes
+   --------------------------------------------------------------- */
+sup,sub,a.footnote {
+    font-size: 1.4ex;
+    height: 0;
+    line-height: 1;
+    position: relative;
+    vertical-align: super;
+}
+
+sub {
+    vertical-align: sub;
+    top: -1px;
+}
+
+/* ---------------------------------------------------------------
+   Print
+   --------------------------------------------------------------- */
+@media print {
+    body {
+        overflow: auto;
+        background: #fff;
+    }
+
+    img,pre,blockquote,table,figure,p {
+        page-break-inside: avoid;
+    }
+
+    #wrapper {
+        background: #fff;
+        color: #303030;
+        font-size: 85%;
+        padding: 10px;
+        position: relative;
+        text-indent: 0;
+    }
+}
+
+/* ---------------------------------------------------------------
+   Screen — layout width, selection colours, and dark (.inverted)
+   --------------------------------------------------------------- */
+@media screen {
+    #wrapper {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 46px 40px 70px;
+    }
+
+    /* --- Inverted / dark mode: ink paper, warm-cream text --- */
+    .inverted #wrapper,.inverted {
+        background: #211d14;
+    }
+
+    .inverted hr {
+        background: #3a3425 !important;
+        border-color: #3a3425 !important;
+    }
+
+    .inverted body,.inverted p,.inverted td,.inverted li,.inverted dd,.inverted caption {
+        color: #d8cfb8 !important;
+    }
+
+    .inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5 {
+        color: #f3ecd9 !important;
+    }
+
+    .inverted h1 em,.inverted h6,.inverted dt {
+        color: var(--gold-lite) !important;
+    }
+
+    .inverted h2::after {
+        background: var(--gold-lite);
+    }
+
+    .inverted ul li::before {
+        background: var(--gold-lite);
+    }
+
+    .inverted a {
+        color: var(--gold-lite) !important;
+        border-bottom-color: rgba(230,184,90,.4);
+    }
+
+    .inverted blockquote {
+        background: #2a2418;
+        border-left-color: var(--gold-lite);
+    }
+
+    .inverted blockquote p {
+        color: #cfc6ad !important;
+    }
+
+    .inverted code {
+        background: #2a2418 !important;
+        color: var(--gold-lite) !important;
+        border-color: #3a3425;
+    }
+
+    .inverted pre {
+        background: #2a2418 !important;
+        border-color: #3a3425;
+    }
+
+    .inverted pre code {
+        color: #d8cfb8 !important;
+    }
+
+    .inverted table { border-color: #3a3425; }
+    .inverted table th,.inverted table td { border-bottom-color: #3a3425; }
+    .inverted table thead { background: rgba(230,184,90,.12); }
+    .inverted table th { color: var(--gold-lite) !important; }
+    .inverted table tbody { background: #251f15; }
+    .inverted table tr:nth-child(even) td { background: #2a2418; }
+
+    /* --- Selection highlights (warm, from the source palette) --- */
+    ::selection {
+        background: rgba(207,150,42,.25);
+    }
+
+    h1::selection,h2::selection,h3::selection,h4::selection,h5::selection,h6::selection {
+        background-color: rgba(207,150,42,.3);
+    }
+
+    li::selection,ol::selection,p::selection {
+        background-color: rgba(230,184,90,.3);
+    }
+
+    code::selection {
+        background-color: rgba(154,103,16,.7);
+        color: #fffdf8;
+    }
+
+    code span::selection {
+        background-color: rgba(154,103,16,.7) !important;
+        color: #fffdf8 !important;
+    }
+
+    a::selection {
+        background-color: rgba(207,150,42,.35);
+    }
+
+    .inverted a::selection {
+        background-color: rgba(230,184,90,.5);
+    }
+
+    td::selection,th::selection,caption::selection {
+        background-color: rgba(207,150,42,.3);
+    }
+}

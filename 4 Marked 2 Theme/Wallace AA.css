@@ -1,0 +1,487 @@
+/*
+   This document has been created with Marked.app <http://markedapp.com>, Copyright 2011 Brett Terpstra
+   Please leave this notice in place, along with any additional credits below.
+   ---------------------------------------------------------------
+   Title: Wallace AA
+   Author: Martin Jewiss
+   Description: A dark-green reader theme on the official Wallace palette
+                (Dark -3 variant: page background #001901). Every colour is a
+                palette value — none invented — and every text/surface pair
+                meets WCAG AA (>= 4.5:1).
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap");
+
+/* ---------------------------------------------------------------
+   Official Wallace palette, Dark -3 variant
+   (only these hex values are used anywhere)
+   --------------------------------------------------------------- */
+:root {
+    /* Monochromatic green ramp */
+    --green-l4: #b4ffc3;   /* Light +4  */
+    --green-l3: #91daa0;   /* Light +3  */
+    --green-l2: #6fb77f;   /* Light +2  */
+    --green-l1: #4d955f;   /* Light +1  — FOREGROUND (AA body text) */
+    --green-base: #2b7440; /* Base      */
+    --green-d1: #005522;   /* Dark -1   */
+    --green-d2: #00360c;   /* Dark -2   */
+    --green-d3: #001901;   /* Dark -3   — PAGE BACKGROUND */
+    --green-d4: #000300;   /* Dark -4   — recessed surfaces */
+
+    /* Chromatic accents (AA row: >= 4.5:1 on Dark -3) */
+    --yellow-orange: #b27238;
+    --yellow: #9c7f26;
+    --yellow-green: #7a8c3a;
+    --green-accent: #4d955f;
+    --cyan: #039885;
+    --blue-cyan: #0094a7;
+    --blue: #3a8bbe;
+    --blue-violet: #697fc5;
+    --violet: #8d73bb;
+    --magenta: #a869a2;
+    --grey: #838383;
+
+    /* Role assignments */
+    --bg: var(--green-d3);
+    --fg: var(--green-l1);
+    --strong: var(--green-l3);
+    --muted: var(--grey);          /* Base fails 4.5:1 on Dark -3 */
+    --heading: var(--cyan);
+    --link: var(--blue);
+    --link-hover: var(--blue-violet);
+    --inline-code: var(--violet);
+    --rule: var(--green-base);
+    --quote-bg: var(--green-d4);
+    --quote-accent: var(--blue);
+    --code-bg: var(--green-d4);
+    --border: var(--green-base);
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 16px/1.6 "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+html>body {
+    font-size: 16px;
+}
+
+body,p,td,div {
+    color: var(--fg);
+    word-wrap: break-word;
+}
+
+/* ---------------------------------------------------------------
+   Headings — Cyan
+   --------------------------------------------------------------- */
+h1,h2,h3,h4,h5,h6 {
+    color: var(--heading);
+    font-family: "Hanken Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2.4em;
+    margin: .4em 0 .45em;
+}
+
+h2 {
+    font-size: 1.75em;
+    margin: 1.4em 0 .5em;
+    padding-bottom: .3em;
+    border-bottom: 1px solid var(--rule);
+}
+
+h3 { font-size: 1.4em; margin: 1.4em 0 .5em; }
+h4 { font-size: 1.18em; font-weight: 400; margin: 1.4em 0 .5em; }
+h5 { font-size: 1.05em; font-weight: 400; margin: 1.4em 0 .4em; }
+
+h6 {
+    font-size: .92em;
+    font-weight: 400;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin: 1.6em 0 .5em;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 1.1em 0;
+}
+
+strong,b {
+    color: var(--strong);
+    font-weight: 600;
+}
+
+em,i {
+    font-style: italic;
+}
+
+/* ---------------------------------------------------------------
+   Links — Blue (hover Blue-Violet)
+   --------------------------------------------------------------- */
+a {
+    -webkit-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(58,139,190,.4); /* --blue at 40% */
+}
+
+a:hover {
+    color: var(--link-hover);
+    border-bottom-color: var(--link-hover);
+}
+
+.footnote {
+    color: var(--blue);
+    font-size: .8em;
+    vertical-align: super;
+}
+
+#wrapper img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+/* ---------------------------------------------------------------
+   Lists — markers in the heading colour
+   --------------------------------------------------------------- */
+ul,ol {
+    padding-left: 1.6em;
+}
+
+li {
+    line-height: 1.6;
+    margin: .45em 0;
+}
+
+li::marker {
+    color: var(--heading);
+}
+
+li li { font-size: 100%; }
+
+li p { font-size: 100%; margin: .5em 0; }
+
+li > p:first-child { margin: 0; }
+
+ul ul,ul ol,ol ol,ol ul {
+    margin-bottom: .4em;
+    margin-top: .4em;
+}
+
+dd { margin-bottom: 1em; }
+
+dt {
+    font-weight: 600;
+    color: var(--strong);
+}
+
+/* ---------------------------------------------------------------
+   Blockquote — Blue spine on recessed Dark -4
+   --------------------------------------------------------------- */
+blockquote {
+    margin: 1.5em 0;
+    padding: 12px 20px;
+    background: var(--quote-bg);
+    border-left: 3px solid var(--quote-accent);
+    border-radius: 0 6px 6px 0;
+}
+
+blockquote p {
+    font-style: italic;
+    line-height: 1.55;
+    margin: .4em 0;
+}
+
+/* ---------------------------------------------------------------
+   Horizontal rule
+   --------------------------------------------------------------- */
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--rule);
+    margin: 2.4em 0;
+}
+
+/* ---------------------------------------------------------------
+   Code — inline Violet; blocks on recessed Dark -4
+   --------------------------------------------------------------- */
+code {
+    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .88em;
+    background: var(--code-bg);
+    color: var(--inline-code);
+    padding: .12em .4em;
+    border-radius: 4px;
+    border: 1px solid var(--green-d1);
+}
+
+pre {
+    background: var(--code-bg);
+    border: 1px solid var(--green-d1);
+    border-radius: 8px;
+    padding: 16px 18px;
+    overflow: auto;
+    line-height: 1.5;
+}
+
+pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--fg);
+    font-size: .85em;
+}
+
+.poetry pre {
+    display: block;
+    font-style: italic;
+    line-height: 1.6em;
+    margin-left: 1em;
+}
+
+/* ---------------------------------------------------------------
+   Tables — header in heading colour, palette-green borders
+   --------------------------------------------------------------- */
+caption,col,colgroup,table,tbody,td,tfoot,th,thead,tr {
+    border-spacing: 0;
+}
+
+table {
+    border: 1px solid var(--border);
+    border-collapse: collapse;
+    display: table;
+    empty-cells: hide;
+    margin: 1em 0 1.6em;
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+caption {
+    display: table-caption;
+    font-weight: 700;
+    color: var(--strong);
+}
+
+col { display: table-column; }
+colgroup { display: table-column-group; }
+tbody { display: table-row-group; }
+tfoot { display: table-footer-group; }
+thead { display: table-header-group; }
+td,th { display: table-cell; }
+tr { display: table-row; }
+
+table th,table td {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: .55em 1em;
+    border-bottom: 1px solid var(--green-d1);
+}
+
+table thead {
+    background: var(--green-d4);
+    border-bottom: 1px solid var(--green-d1);
+}
+
+table th {
+    color: var(--heading);
+    text-align: left;
+    font-weight: 600;
+}
+
+table tbody { background: var(--bg); }
+
+table tfoot {
+    background: var(--green-d4);
+    border-top: 1px solid var(--green-d1);
+}
+
+table tr:nth-child(even) td {
+    background: var(--green-d4);
+}
+
+/* ---------------------------------------------------------------
+   Figures
+   --------------------------------------------------------------- */
+figure {
+    display: inline-block;
+    position: relative;
+    margin: 1em 0 2em;
+}
+
+figcaption {
+    font-size: .82em;
+    text-align: center;
+    color: var(--muted);
+    margin-top: .6em;
+}
+
+/* ---------------------------------------------------------------
+   Sup / sub / footnotes
+   --------------------------------------------------------------- */
+sup,sub,a.footnote {
+    font-size: 1.4ex;
+    height: 0;
+    line-height: 1;
+    position: relative;
+    vertical-align: super;
+}
+
+sub {
+    vertical-align: sub;
+    top: -1px;
+}
+
+/* ---------------------------------------------------------------
+   Print — light fallback so ink isn't wasted on dark green
+   --------------------------------------------------------------- */
+@media print {
+    body {
+        overflow: auto;
+        background: #fff;
+        color: var(--green-d2);
+    }
+
+    img,pre,blockquote,table,figure,p {
+        page-break-inside: avoid;
+    }
+
+    #wrapper {
+        background: #fff;
+        color: var(--green-d2);
+        font-size: 85%;
+        padding: 10px;
+        position: relative;
+        text-indent: 0;
+    }
+}
+
+/* ---------------------------------------------------------------
+   Screen — layout + selection. .inverted flips to a light-green
+   variant built entirely from the mono ramp (keeps AA contrast).
+   --------------------------------------------------------------- */
+@media screen {
+    #wrapper {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 46px 40px 70px;
+    }
+
+    /* --- Inverted: light-green paper, deep-green text --- */
+    .inverted #wrapper,.inverted {
+        background: var(--green-l4);
+    }
+
+    .inverted body,.inverted p,.inverted td,.inverted li,.inverted dd,.inverted caption {
+        color: var(--green-d3) !important;
+    }
+
+    .inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5 {
+        color: var(--green-d1) !important;
+    }
+
+    .inverted h2 {
+        border-bottom-color: var(--green-base);
+    }
+
+    .inverted h6 {
+        color: var(--green-base) !important;
+    }
+
+    /* Dark -1, not Base: links may sit on Light +3 surfaces
+       (blockquotes, table stripes) where Base falls below 4.5:1 */
+    .inverted .footnote {
+        color: var(--green-d1) !important;
+    }
+
+    .inverted strong,.inverted b,.inverted dt {
+        color: var(--green-d2) !important;
+    }
+
+    .inverted a {
+        color: var(--green-d1) !important;
+        border-bottom-color: var(--green-d1);
+    }
+
+    .inverted hr {
+        background: var(--green-base) !important;
+    }
+
+    .inverted blockquote {
+        background: var(--green-l3);
+        border-left-color: var(--green-d1);
+    }
+
+    .inverted li::marker {
+        color: var(--green-d1);
+    }
+
+    .inverted code {
+        background: var(--green-l3) !important;
+        color: var(--green-d1) !important;
+        border-color: var(--green-base);
+    }
+
+    .inverted pre {
+        background: var(--green-l3) !important;
+        border-color: var(--green-base);
+    }
+
+    .inverted pre code {
+        color: var(--green-d3) !important;
+    }
+
+    .inverted table { border-color: var(--green-base); }
+    .inverted table th,.inverted table td { border-bottom-color: var(--green-base); }
+    .inverted table thead,.inverted table tfoot { background: var(--green-l3); }
+    .inverted table th { color: var(--green-d1) !important; }
+    .inverted table tbody { background: var(--green-l4); }
+    .inverted table tr:nth-child(even) td { background: var(--green-l3); }
+
+    /* --- Selection (Dark -1, matching AAA editor.selectionBackground) --- */
+    ::selection {
+        background: rgba(0,85,34,.99);
+    }
+
+    h1::selection,h2::selection,h3::selection,h4::selection,h5::selection,h6::selection {
+        background-color: rgba(0,85,34,.99);
+    }
+
+    li::selection,ol::selection,p::selection {
+        background-color: rgba(0,85,34,.99);
+    }
+
+    code::selection {
+        background-color: rgba(0,25,1,.99);
+        color: var(--green-l4);
+    }
+
+    code span::selection {
+        background-color: rgba(0,25,1,.99) !important;
+        color: var(--green-l4) !important;
+    }
+
+    a::selection {
+        background-color: rgba(0,85,34,.99);
+    }
+
+    td::selection,th::selection,caption::selection {
+        background-color: rgba(0,85,34,.99);
+    }
+
+    .inverted ::selection {
+        background: rgba(145,218,160,.8);
+    }
+}
