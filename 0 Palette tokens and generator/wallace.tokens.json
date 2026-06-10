@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "name": "Wallace",
+    "version": "2.0.0",
+    "license": "MPL-2.0",
+    "description": "Single source of truth for the Wallace palette and role map. Apps formats are emitted from this file by generate.py. Derivation: see '1 Main colour palettes/Wallace Palette Derivation.md'.",
+    "origin": { "l": 0.5, "c": 0.11, "h": 150 },
+    "step": 0.1086,
+    "formula": {
+      "ramp": "L(k) = origin.l + k * step, k = -4..+4, at C=0.11 H=150",
+      "accentRow": "oklch(L(step) 0.11 hue) for hue = 0,30,...,330; grey at C=0",
+      "step": "smallest uniform interval where every hue 5 steps above the background reaches 7:1 (AAA); 4 steps then gives 4.5:1 (AA) for every hue",
+      "gamut": "colours outside sRGB are fitted with coloraide fit('srgb'); hexes below are the fitted, verified values"
+    }
+  },
+  "ramp": {
+    "light4": { "l": 0.9344, "hex": "#b4ffc3" },
+    "light3": { "l": 0.8258, "hex": "#91daa0" },
+    "light2": { "l": 0.7172, "hex": "#6fb77f" },
+    "light1": { "l": 0.6086, "hex": "#4d955f" },
+    "base":   { "l": 0.5,    "hex": "#2b7440" },
+    "dark1":  { "l": 0.3914, "hex": "#005522" },
+    "dark2":  { "l": 0.2828, "hex": "#00360c" },
+    "dark3":  { "l": 0.1742, "hex": "#001901" },
+    "dark4":  { "l": 0.0656, "hex": "#000300" }
+  },
+  "hues": {
+    "red": 0, "orange": 30, "yellow-orange": 60, "yellow": 90,
+    "yellow-green": 120, "green": 150, "cyan": 180, "blue-cyan": 210,
+    "blue": 240, "blue-violet": 270, "violet": 300, "magenta": 330
+  },
+  "excludedHues": ["red", "orange"],
+  "rows": {
+    "light1": {
+      "red": "#b86580", "orange": "#bc685b", "yellow-orange": "#b27238",
+      "yellow": "#9c7f26", "yellow-green": "#7a8c3a", "green": "#4d955f",
+      "cyan": "#039885", "blue-cyan": "#0094a7", "blue": "#3a8bbe",
+      "blue-violet": "#697fc5", "violet": "#8d73bb", "magenta": "#a869a2",
+      "grey": "#838383"
+    },
+    "light2": {
+      "red": "#dc86a1", "orange": "#e0897a", "yellow-orange": "#d69359",
+      "yellow": "#bea04b", "yellow-green": "#9bae5c", "green": "#6fb77f",
+      "cyan": "#42baa6", "blue-cyan": "#37b6ca", "blue": "#5dade2",
+      "blue-violet": "#89a0e9", "violet": "#ae94de", "magenta": "#cb8ac5",
+      "grey": "#a4a4a4"
+    },
+    "light3": {
+      "red": "#ffa8c3", "orange": "#ffab9b", "yellow-orange": "#fbb57b",
+      "yellow": "#e2c36e", "yellow-green": "#bdd17e", "green": "#91daa0",
+      "cyan": "#6addc9", "blue-cyan": "#62d9ed", "blue": "#80d0ff",
+      "blue-violet": "#aac3ff", "violet": "#d1b6ff", "magenta": "#eface8",
+      "grey": "#c6c6c6"
+    }
+  },
+  "standards": {
+    "aa":  { "label": "Wallace AA",  "minContrast": 4.5, "background": "dark3", "foreground": "light1", "accentRow": "light1", "brightRow": "light2", "strong": "light3" },
+    "aaa": { "label": "Wallace AAA", "minContrast": 7.0, "background": "dark3", "foreground": "light2", "accentRow": "light2", "brightRow": "light3", "strong": "light3" }
+  },
+  "roles": {
+    "comment":          { "colour": "grey", "style": "italic" },
+    "keyword":          { "colour": "cyan" },
+    "tag":              { "colour": "cyan" },
+    "jsonKey":          { "colour": "cyan" },
+    "heading":          { "colour": "cyan" },
+    "cssClassName":     { "colour": "cyan" },
+    "string":           { "colour": "yellow-green" },
+    "function":         { "colour": "blue" },
+    "attribute":        { "colour": "blue" },
+    "cssPropertyName":  { "colour": "blue" },
+    "link":             { "colour": "blue" },
+    "type":             { "colour": "blue-cyan" },
+    "class":            { "colour": "blue-cyan" },
+    "embedDelimiter":   { "colour": "blue-cyan" },
+    "identifier":       { "colour": "blue-cyan" },
+    "variable":         { "colour": "yellow" },
+    "regex":            { "colour": "yellow" },
+    "decorator":        { "colour": "yellow", "style": "italic" },
+    "number":           { "colour": "yellow-orange" },
+    "constant":         { "colour": "yellow-orange" },
+    "matchHighlight":   { "colour": "yellow-orange" },
+    "punctuation":      { "colour": "grey" },
+    "operator":         { "colour": "grey" },
+    "error":            { "colour": "magenta" },
+    "invalid":          { "colour": "magenta" },
+    "deleted":          { "colour": "magenta" },
+    "inserted":         { "colour": "green" },
+    "linkHover":        { "colour": "blue-violet" },
+    "inlineCode":       { "colour": "violet" },
+    "pseudoClass":      { "colour": "violet" }
+  },
+  "surfaces": {
+    "selection": "dark1",
+    "lineHighlight": "dark2",
+    "raised": "dark2",
+    "recessed": "dark4",
+    "cursor": "light4"
+  },
+  "ansi": {
+    "comment": "No red anywhere: the ANSI red slot carries the error role (magenta); the ANSI magenta slot shifts to violet to stay distinct.",
+    "black": { "ramp": "dark2" },
+    "red": { "hue": "magenta" },
+    "green": { "hue": "green" },
+    "yellow": { "hue": "yellow" },
+    "blue": { "hue": "blue" },
+    "magenta": { "hue": "violet" },
+    "cyan": { "hue": "cyan" },
+    "white": { "row": "foreground+1" },
+    "brightBlack": { "ramp": "base" },
+    "brightWhite": { "row": "foreground+2" }
+  }
+}

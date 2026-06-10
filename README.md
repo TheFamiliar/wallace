@@ -35,9 +35,12 @@ The origin green and palette colour selections have been informed by psychology 
 
 ## Repository layout
 
+0. **Palette tokens and generator** — `wallace.tokens.json`, the machine-readable source of truth (palette + role map), and `generate.py`, which emits the CLI and Sequel Ace themes and audits every themed file against the palette.
 1. **Main colour palettes** — the four palette definitions (AA/AAA × Dark -3 official/Dark -2 variant), the derivation document, and a visual comparison page.
 2. **OKLCH colour trials and workings** — scripts, experiments and a Python venv (coloraide) used to generate and verify colours.
 3. **VS Code themes** — one extension contributing both *Wallace AA* and *Wallace AAA*.
 4. **Marked 2 Theme** — `Wallace AA.css` and `Wallace AAA.css`.
 5. **Terminal Theme** — `Wallace AA.terminal` and `Wallace AAA.terminal` profiles.
 6. **BB Edit Theme** — `Wallace AA.bbColorScheme` and `Wallace AAA.bbColorScheme`.
+7. **CLI Themes** — bat (`.tmTheme`), delta (`wallace.gitconfig`) and fzf (`wallace-fzf.sh`), generated from the tokens.
+8. **Sequel Ace Theme** — `Wallace AA.spTheme` and `Wallace AAA.spTheme`, generated from the tokens.
