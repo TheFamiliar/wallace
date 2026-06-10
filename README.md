@@ -33,6 +33,10 @@ The origin green and palette colour selections have been informed by psychology 
 1. Green hues tend to boost creativity and aid in completion of creative tasks
 2. Red hues tend to increase speed of brain function but reduce cognitive ability.
 
+## Installing the themes
+
+Step-by-step instructions for every application (VS Code, Marked 2, macOS Terminal, BBEdit, bat, delta, fzf, Sequel Ace) are in [INSTALL.md](INSTALL.md).
+
 ## Repository layout
 
 0. **Palette tokens and generator** — `wallace.tokens.json`, the machine-readable source of truth (palette + role map), and `generate.py`, which emits the CLI and Sequel Ace themes and audits every themed file against the palette.
