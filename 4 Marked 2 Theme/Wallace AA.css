@@ -5,7 +5,7 @@
    Title: Wallace AA
    Author: Martin Jewiss
    Description: A dark-green reader theme on the official Wallace palette
-                (Dark -3 variant: page background #001901). Every colour is a
+                (Dark -3 variant: page background #002909). Every colour is a
                 palette value — none invented — and every text/surface pair
                 meets WCAG AA (>= 4.5:1).
 */
@@ -18,28 +18,28 @@
    --------------------------------------------------------------- */
 :root {
     /* Monochromatic green ramp */
-    --green-l4: #b4ffc3;   /* Light +4  */
-    --green-l3: #91daa0;   /* Light +3  */
-    --green-l2: #6fb77f;   /* Light +2  */
-    --green-l1: #4d955f;   /* Light +1  — FOREGROUND (AA body text) */
+    --green-l4: #98e2a7;   /* Light +4  */
+    --green-l3: #98e2a7;   /* Light +3  */
+    --green-l2: #7cc58c;   /* Light +2  */
+    --green-l1: #61a972;   /* Light +1  — FOREGROUND (AA body text) */
     --green-base: #2b7440; /* Base      */
-    --green-d1: #005522;   /* Dark -1   */
-    --green-d2: #00360c;   /* Dark -2   */
-    --green-d3: #001901;   /* Dark -3   — PAGE BACKGROUND */
-    --green-d4: #000300;   /* Dark -4   — recessed surfaces */
+    --green-d1: #075b28;   /* Dark -1   */
+    --green-d2: #004211;   /* Dark -2   */
+    --green-d3: #002909;   /* Dark -3   — PAGE BACKGROUND */
+    --green-d4: #001300;   /* Dark -4   — recessed surfaces */
 
     /* Chromatic accents (AA row: >= 4.5:1 on Dark -3) */
-    --yellow-orange: #b27238;
-    --yellow: #9c7f26;
-    --yellow-green: #7a8c3a;
-    --green-accent: #4d955f;
-    --cyan: #039885;
-    --blue-cyan: #0094a7;
-    --blue: #3a8bbe;
-    --blue-violet: #697fc5;
-    --violet: #8d73bb;
-    --magenta: #a869a2;
-    --grey: #838383;
+    --yellow-orange: #c8854c;
+    --yellow: #b1933d;
+    --yellow-green: #8ea04e;
+    --green-accent: #61a972;
+    --cyan: #30ac99;
+    --blue-cyan: #22a8bc;
+    --blue: #4f9fd3;
+    --blue-violet: #7c93da;
+    --violet: #a186d0;
+    --magenta: #bd7db7;
+    --grey: #969696;
 
     /* Role assignments */
     --bg: var(--green-d3);
@@ -133,7 +133,7 @@ a {
     transition: color .2s ease-in-out;
     color: var(--link);
     text-decoration: none;
-    border-bottom: 1px solid rgba(58,139,190,.4); /* --blue at 40% */
+    border-bottom: 1px solid rgba(79,159,211,.4); /* --blue at 40% */
 }
 
 a:hover {
@@ -452,36 +452,36 @@ sub {
 
     /* --- Selection (Dark -1, matching AAA editor.selectionBackground) --- */
     ::selection {
-        background: rgba(0,85,34,.99);
+        background: rgba(7,91,40,.99);
     }
 
     h1::selection,h2::selection,h3::selection,h4::selection,h5::selection,h6::selection {
-        background-color: rgba(0,85,34,.99);
+        background-color: rgba(7,91,40,.99);
     }
 
     li::selection,ol::selection,p::selection {
-        background-color: rgba(0,85,34,.99);
+        background-color: rgba(7,91,40,.99);
     }
 
     code::selection {
-        background-color: rgba(0,25,1,.99);
+        background-color: rgba(0,41,9,.99);
         color: var(--green-l4);
     }
 
     code span::selection {
-        background-color: rgba(0,25,1,.99) !important;
+        background-color: rgba(0,41,9,.99) !important;
         color: var(--green-l4) !important;
     }
 
     a::selection {
-        background-color: rgba(0,85,34,.99);
+        background-color: rgba(7,91,40,.99);
     }
 
     td::selection,th::selection,caption::selection {
-        background-color: rgba(0,85,34,.99);
+        background-color: rgba(7,91,40,.99);
     }
 
     .inverted ::selection {
-        background: rgba(145,218,160,.8);
+        background: rgba(152,226,167,.8);
     }
 }

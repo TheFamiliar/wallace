@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- Wallace version 3 ramp options. Data: v3_options_data.js (from v3_ramp_options.py).
+     This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Wallace v3 — green ramp options</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 32px 48px;
+    background: #131313; color: #c6c6c6;
+    font: 15px/1.5 -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+  }
+  h1 { font-size: 21px; font-weight: 600; color: #e4e4e4; margin: 0 0 4px; }
+  .sub { color: #8d8d8d; max-width: 72em; margin: 0 0 20px; }
+  .toggle { display: inline-flex; gap: 0; margin: 0 0 22px; border: 1px solid #3a3d3a;
+            border-radius: 8px; overflow: hidden; }
+  .toggle button {
+    font: 600 14px/1 inherit; padding: 10px 22px; border: 0; cursor: pointer;
+    background: transparent; color: #9a9a9a;
+  }
+  .toggle button.on { background: #2b7440; color: #eafff0; }
+  .strip { display: flex; height: 96px; margin: 0 0 24px; border-radius: 10px;
+           overflow: hidden; }
+  .strip div { flex: 1; display: flex; flex-direction: column; gap: 2px;
+               justify-content: center; align-items: center; font-size: 11.5px; }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(305px, 1fr));
+          gap: 18px; align-items: start; }
+  @media (max-width: 1400px) { .grid { grid-template-columns: repeat(2, minmax(305px, 1fr)); } }
+
+  .panel { border-radius: 12px; padding: 18px 18px 16px; border: 1px solid #000; }
+  .panel h2 { font-size: 16px; margin: 0 0 2px; font-weight: 650; }
+  .meta { font-size: 12.5px; margin: 0 0 2px; }
+  .note { font-size: 12.5px; line-height: 1.45; margin: 6px 0 14px; }
+
+  .ramp { display: flex; gap: 2px; margin: 0 0 14px; }
+  .ramp div { flex: 1; height: 34px; border-radius: 3px; position: relative; }
+  .ramp div span {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    font-size: 9.5px; padding-top: 3px; white-space: nowrap;
+  }
+  .ramp { margin-bottom: 26px; }
+
+  pre { margin: 0 0 14px; padding: 12px 12px; border-radius: 8px;
+        font: 12.5px/1.55 "SF Mono", ui-monospace, Menlo, monospace;
+        overflow-x: auto; }
+  .chips { display: grid; grid-template-columns: 1fr 1fr; gap: 1px 14px;
+           font: 12.5px/1.7 "SF Mono", ui-monospace, Menlo, monospace; }
+  .chips div { display: flex; justify-content: space-between; }
+  .chips .ratio { opacity: .75; font-size: 11.5px; }
+  .prose { font-size: 13.5px; line-height: 1.55; margin: 0 0 14px; }
+  .label { font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+           opacity: .65; margin: 14px 0 6px; }
+  .foot { margin-top: 30px; max-width: 76em; color: #8d8d8d; font-size: 13px; }
+  .foot li { margin-bottom: 6px; }
+  code { font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+<h1>Wallace v3 — green ramp options</h1>
+<p class="sub">
+Four complete systems, ordered left to right by background lightness.
+Each panel is drawn on the background that option would actually create, with its own
+foreground green and equal-lightness accent row. Every accent shown passes its bar
+against that background (worst hue is always magenta). The foreground green remains
+the green of the accent row in all options.
+</p>
+<div class="toggle">
+  <button id="btn-aa" class="on">Wallace AA &nbsp;(&ge; 4.5:1)</button>
+  <button id="btn-aaa">Wallace AAA &nbsp;(&ge; 7:1)</button>
+</div>
+<div class="strip" id="strip"></div>
+<div class="grid" id="grid"></div>
+
+<div class="foot">
+<ul>
+<li><strong>Equal temperament was tried and rejected:</strong> a constant contrast
+ratio per step (geometric in luminance, anchored on the base green) needs ratio
+1.504 once the worst hue is satisfied, which pushes the background <em>darker</em>
+(#001000, L&nbsp;0.140). Compression that lightens the background has to come from
+the step grid instead, which is what A, B and C do.</li>
+<li><strong>B</strong> keeps a uniform ramp and simply refines it: 5 steps a side,
+background = dark4. Its AA accents land at 5.2:1 minimum — extra headroom.</li>
+<li><strong>C</strong> keeps the familiar light1/light2 foreground rows but its
+stretched light side pushes light4 (the cursor) past the gamut: it clamps to pure
+white #ffffff.</li>
+<li><strong>A</strong> is the strongest pull toward base (~0.83&times; step):
+background #002909 sits about halfway between the old dark3 and the
+too-bright dark2 (#00360c).</li>
+</ul>
+</div>
+
+<script src="v3_options_data.js"></script>
+<script>
+const ORDER = ["current", "b", "c", "a"];
+const HUE_ORDER = ["yellow-orange","yellow","yellow-green","green","cyan",
+                   "blue-cyan","blue","blue-violet","violet","magenta","grey"];
+
+// [role-or-null, text] — roles resolve through DATA.roles -> accent row
+const CODE = [
+ ["comment","/* Card on the raised surface */"], null,
+ [null,"."],["cssClassName","card"],["pseudoClass",":hover"],[null," "],["punctuation","{"], null,
+ [null,"  "],["cssPropertyName","background"],["punctuation",":"],[null," "],["constant","#00360c"],["punctuation",";"], null,
+ [null,"  "],["cssPropertyName","margin"],["punctuation",":"],[null," "],["number","0 auto"],["punctuation",";"], null,
+ ["punctuation","}"], null, null,
+ ["comment","// Reload the active theme"], null,
+ ["keyword","async function"],[null," "],["function","reload"],["punctuation","("],["variable","name"],["punctuation",") {"], null,
+ [null,"  "],["keyword","const"],[null," "],["variable","url"],[null," "],["operator","="],[null," "],
+   ["string","`themes/"],["punctuation","${"],["variable","name"],["punctuation","}"],["string",".json`"],["punctuation",";"], null,
+ [null,"  "],["keyword","return new"],[null," "],["type","Theme"],["punctuation","("],
+   ["keyword","await"],[null," "],["function","fetch"],["punctuation","("],["variable","url"],["punctuation",")"],
+   ["punctuation",","],[null," "],["number","9"],["punctuation",");"], null,
+ ["punctuation","}"]
+];
+
+let std = "aa";
+
+function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+function renderCode(s){
+  let html = "";
+  for (const tok of CODE) {
+    if (tok === null) { html += "\n"; continue; }
+    const [role, text] = tok;
+    if (!role) { html += esc(text); continue; }
+    const spec = DATA.roles[role] || { colour: role };
+    const colour = s.accents[spec.colour];
+    const style = spec.style === "italic" ? "font-style:italic;" : "";
+    html += `<span style="color:${colour};${style}">${esc(text)}</span>`;
+  }
+  return html;
+}
+
+function panel(o){
+  const s = o.standards[std];
+  const ramp = Object.entries(o.ramp);
+  const fgRow = s.row;
+  const rampHtml = ramp.map(([name, v]) => {
+    const mark = name === o.bg ? "bg" : (name === fgRow ? "fg" : "");
+    const ring = mark ? `outline:2px solid ${mark==="bg" ? s.accents.grey : v.hex}; outline-offset:2px;` : "";
+    return `<div style="background:${v.hex};${ring}" title="${name} L=${v.l} ${v.hex}">
+              <span style="color:${s.fg}">${mark ? mark+" · " : ""}${name.replace("dark","d").replace("light","l")}</span></div>`;
+  }).join("");
+  const chips = HUE_ORDER.map(h => `
+    <div><span style="color:${s.accents[h]}">${h}</span>
+         <span class="ratio" style="color:${s.accents[h]}">${s.contrast[h].toFixed(2)}</span></div>`).join("");
+  const lh = o.ramp[{current:"dark2", b:"dark3", c:"dark2", a:"dark2"}[o.key]].hex;
+  const sel = o.ramp[{current:"dark1", b:"dark2", c:"dark1", a:"dark1"}[o.key]].hex;
+  return `<div class="panel" style="background:${o.bgHex}">
+    <h2 style="color:${s.fg}">${o.title}</h2>
+    <p class="meta" style="color:${s.fg}">bg ${o.bg} · ${o.bgHex} · L ${o.bgL.toFixed(3)}</p>
+    <p class="meta" style="color:${s.fg}">fg/accents ${s.row} · min ${s.worst.ratio.toFixed(2)}:1 (${s.worst.hue}) · bar ${s.bar}:1</p>
+    <p class="note" style="color:${s.accents.grey}">${o.note}</p>
+    <div class="ramp">${rampHtml}</div>
+    <div class="label" style="color:${s.fg}">v2 background (dark3 #001901) on this background</div>
+    <div style="background:#001901;height:56px;border-radius:6px;margin:0 0 16px;
+                display:flex;align-items:center;justify-content:center">
+      <span style="color:${s.accents.grey};font-size:11px">#001901</span>
+    </div>
+    <div class="label" style="color:${s.fg}">Code on this background</div>
+    <pre style="background:${o.bgHex};color:${s.fg};border:1px solid ${lh}">${renderCode(s)}</pre>
+    <div class="label" style="color:${s.fg}">Plain text, line highlight, selection</div>
+    <p class="prose" style="color:${s.fg}">The quick green fox — body text in the
+      foreground green (${s.fg}, ${s.contrast.green.toFixed(2)}:1).<br>
+      <span style="background:${lh};display:inline-block;width:100%">A line-highlighted row sits on ${lh}.</span>
+      <span style="background:${sel}">Selected text sits on ${sel}.</span></p>
+    <div class="label" style="color:${s.fg}">Accent row · contrast vs background</div>
+    <div class="chips">${chips}</div>
+  </div>`;
+}
+
+function render(){
+  document.getElementById("strip").innerHTML = ORDER.map(k => {
+    const o = DATA.options.find(x => x.key === k);
+    const s = o.standards[std];
+    return `<div style="background:${o.bgHex}">
+      <span style="color:${s.fg};font-weight:600">${o.title}</span>
+      <span style="color:${s.accents.grey}">${o.bgHex} · L ${o.bgL.toFixed(3)}</span>
+    </div>`;
+  }).join("");
+  document.getElementById("grid").innerHTML =
+    ORDER.map(k => panel(DATA.options.find(o => o.key === k))).join("");
+  document.getElementById("btn-aa").className = std === "aa" ? "on" : "";
+  document.getElementById("btn-aaa").className = std === "aaa" ? "on" : "";
+}
+document.getElementById("btn-aa").onclick  = () => { std = "aa";  render(); };
+document.getElementById("btn-aaa").onclick = () => { std = "aaa"; render(); };
+render();
+</script>
+</body>
+</html>

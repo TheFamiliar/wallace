@@ -20,11 +20,11 @@ For ease, base colour definitions and operations are in OKLCH, a perceptually un
 
 Colours are converted to rgb/hex/hsl as a final step, only when the destination application does not support oklch.
 
-All colours are derived from a single muted forest green origin, at the mid-point of the luminance scale: **`oklch(0.5 0.11 150)`** — plus one derived constant, the ramp step **h = 0.1086**.
+All colours are derived from a single muted forest green origin, at the mid-point of the luminance scale: **`oklch(0.5 0.11 150)`** — plus one derived constant, the ramp step **h = 0.087** (version 3; version 2 used 0.1086).
 
-The step constant is solved so that contrast is a function of step distance alone: text **4 steps** above its surface meets **AA** (4.5:1) for every hue of the chromatic wheel, and **5 steps** meets **AAA** (7:1). The full construction — origin → monochromatic green ramp → chromatic palette, including the mathematical/musical reasoning behind the step — is documented in [`1 Main colour palettes/Wallace Palette Derivation.md`](1%20Main%20colour%20palettes/Wallace%20Palette%20Derivation.md).
+The step constant is solved so that contrast is a function of step distance alone: text **5 steps** above its surface meets **AA** (4.5:1) for every hue of the chromatic wheel, and **6 steps** meets **AAA** (7:1). The full construction — origin → monochromatic green ramp → chromatic palette, including the mathematical/musical reasoning behind the step — is documented in [`1 Main colour palettes/Wallace Palette Derivation.md`](1%20Main%20colour%20palettes/Wallace%20Palette%20Derivation.md).
 
-The **official palette is the Dark -3 variant** (background `#001901`): lower overall luminance for reduced eye strain, suited to photophobia and light sensitivity. A higher-luminance Dark -2 variant is documented alongside it.
+The **official palette is the Dark -3 variant** (background `#002909`): lower overall luminance for reduced eye strain, suited to photophobia and light sensitivity. Version 3 compressed the ramp after the version 2 background (`#001901`) proved slightly too dark in daily use.
 
 The canonical theme palette excludes red and orange (see below); error/alert roles use magenta instead.
 

@@ -243,8 +243,47 @@ h is the smallest value where that minimum reaches 7.0.
    the red/magenta side (hue-dependent luminance). First fix raised the
    accent rows independently of the ramp (L 0.615 / 0.725) — compliant,
    but it orphaned the accents from the green steps.
-3. **Derived ramp (current):** the origin green was kept fixed, and the
+3. **Derived ramp (version 2):** the origin green was kept fixed, and the
    step constant h = 0.1086 was solved from the AAA worst-hue constraint,
    restoring the accent↔ramp identity while keeping both standards exact.
    Red and orange were dropped from the canonical set; the Dark −3 pairing
    was made official.
+4. **Compressed ramp (version 3, current):** daily use showed the Dark −3
+   background slightly too dark (and Dark −2 too bright). The ramp was
+   compressed toward base (see §9); each standard's rows moved up one
+   rung to keep both contrast bars.
+
+## 9. Version 3 revision — the compressed ramp
+
+In-use feedback: the version 2 background `#001901` was slightly too dark,
+but the next step up (`#00360c`) too bright. A constant-contrast-ratio
+("equal temperament") progression was evaluated and rejected: satisfying
+the worst hue (always magenta) forces the per-step ratio to 1.504, which
+pushes the background *darker* (`#001000`). Because version 2's step was
+already minimal, the background can only rise if the accent rows rise
+with it — so version 3 keeps nine steps and compresses the whole ramp
+uniformly (~0.83×), promoting each standard's rows one rung:
+
+> **h = 0.087** — the smallest uniform step where every hue **six** steps
+> above the background reaches AAA (7:1); **five** steps then gives AA
+> (4.5:1) for every hue. Binding hue: magenta (7.10:1 AAA, 5.13:1 AA —
+> the discrete sRGB hex grid is why neither lands exactly on the bar).
+
+| Step | L | Hex | Role |
+|---|---|---|---|
+| Light +4 | 0.848 | `#98e2a7` | cursor; bold/strong text |
+| Light +3 | 0.761 | `#7cc58c` | **AAA foreground + accents** |
+| Light +2 | 0.674 | `#61a972` | **AA foreground + accents** |
+| Light +1 | 0.587 | `#468e58` | (unused by the standards) |
+| Base | 0.500 | `#2b7440` | **origin** — never moves |
+| Dark −1 | 0.413 | `#075b28` | selections, borders |
+| Dark −2 | 0.326 | `#004211` | raised surfaces, line highlight |
+| Dark −3 | 0.239 | `#002909` | **official background** |
+| Dark −4 | 0.152 | `#001300` | recessed surfaces, code blocks |
+
+Gamut note: hexes are fitted with coloraide
+`fit('srgb', method='lch-chroma')` — later coloraide releases changed the
+default fit method, so it must be named explicitly to reproduce these
+values. Workings: `2 OKLCH colour trials and workings/v3_ramp_options.py`
+(candidate ramps + HTML presenter) and `migrate_v3.py` / 
+`migrate_v3_terminal.py` (the v2→v3 migration of every themed file).

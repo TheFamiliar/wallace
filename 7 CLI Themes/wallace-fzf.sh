@@ -4,5 +4,5 @@
 #   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $WALLACE_FZF_AA"
 #   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $WALLACE_FZF_AAA"
 
-WALLACE_FZF_AA="--color=bg:#001901,fg:#4d955f,bg+:#005522,fg+:#91daa0,hl:#b27238,hl+:#d69359,query:#6fb77f,info:#838383,prompt:#039885,pointer:#b4ffc3,marker:#9c7f26,spinner:#838383,header:#838383,border:#2b7440,label:#838383,gutter:#000300,separator:#2b7440,scrollbar:#2b7440"
-WALLACE_FZF_AAA="--color=bg:#001901,fg:#6fb77f,bg+:#005522,fg+:#91daa0,hl:#d69359,hl+:#fbb57b,query:#91daa0,info:#a4a4a4,prompt:#42baa6,pointer:#b4ffc3,marker:#bea04b,spinner:#a4a4a4,header:#a4a4a4,border:#2b7440,label:#a4a4a4,gutter:#000300,separator:#2b7440,scrollbar:#2b7440"
+WALLACE_FZF_AA="--color=bg:#002909,fg:#61a972,bg+:#075b28,fg+:#98e2a7,hl:#c8854c,hl+:#e5a067,query:#7cc58c,info:#969696,prompt:#30ac99,pointer:#98e2a7,marker:#b1933d,spinner:#969696,header:#969696,border:#2b7440,label:#969696,gutter:#001300,separator:#2b7440,scrollbar:#2b7440"
+WALLACE_FZF_AAA="--color=bg:#002909,fg:#7cc58c,bg+:#075b28,fg+:#98e2a7,hl:#e5a067,hl+:#ffbc82,query:#98e2a7,info:#b1b1b1,prompt:#53c8b4,pointer:#98e2a7,marker:#ccae5a,spinner:#b1b1b1,header:#b1b1b1,border:#2b7440,label:#b1b1b1,gutter:#001300,separator:#2b7440,scrollbar:#2b7440"
