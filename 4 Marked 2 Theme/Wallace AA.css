@@ -19,9 +19,9 @@
 :root {
     /* Monochromatic green ramp */
     --green-l4: #98e2a7;   /* Light +4  */
-    --green-l3: #98e2a7;   /* Light +3  */
-    --green-l2: #7cc58c;   /* Light +2  */
-    --green-l1: #61a972;   /* Light +1  — FOREGROUND (AA body text) */
+    --green-l3: #98e2a7;   /* Light +4 too — v3 shifted rows up; old l3 merged into l4 */
+    --green-l2: #7cc58c;   /* Light +3  */
+    --green-l1: #61a972;   /* Light +2  — FOREGROUND (AA body text) */
     --green-base: #2b7440; /* Base      */
     --green-d1: #075b28;   /* Dark -1   */
     --green-d2: #004211;   /* Dark -2   */
@@ -252,6 +252,74 @@ pre code {
 }
 
 /* ---------------------------------------------------------------
+   Fenced-code syntax highlighting (highlight.js). Marked injects
+   its chosen hljs theme *after* custom CSS, so these are !important
+   to keep Wallace's role colours and the recessed background.
+   --------------------------------------------------------------- */
+.hljs {
+    background: var(--code-bg) !important;
+    color: var(--fg) !important;
+}
+
+.hljs-comment,.hljs-quote {
+    color: var(--grey) !important;
+    font-style: italic;
+}
+
+.hljs-keyword,.hljs-selector-tag,.hljs-tag,.hljs-name,.hljs-doctag,.hljs-section,.hljs-selector-class,.hljs-selector-id {
+    color: var(--cyan) !important;
+}
+
+.hljs-string {
+    color: var(--yellow-green) !important;
+}
+
+.hljs-regexp,.hljs-variable,.hljs-template-variable {
+    color: var(--yellow) !important;
+}
+
+.hljs-number,.hljs-literal,.hljs-symbol,.hljs-bullet,.hljs-meta {
+    color: var(--yellow-orange) !important;
+}
+
+.hljs-function,.hljs-title,.hljs-title.function_,.hljs-attr,.hljs-attribute,.hljs-property,.hljs-link {
+    color: var(--blue) !important;
+}
+
+.hljs-type,.hljs-class,.hljs-title.class_,.hljs-built_in {
+    color: var(--blue-cyan) !important;
+}
+
+.hljs-selector-pseudo {
+    color: var(--violet) !important;
+}
+
+.hljs-operator,.hljs-punctuation {
+    color: var(--grey) !important;
+}
+
+.hljs-deletion {
+    color: var(--magenta) !important;
+}
+
+.hljs-addition {
+    color: var(--green-accent) !important;
+}
+
+.hljs-subst,.hljs-params,.hljs-formula {
+    color: var(--fg) !important;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: 600;
+    color: var(--strong) !important;
+}
+
+/* ---------------------------------------------------------------
    Tables — header in heading colour, palette-green borders
    --------------------------------------------------------------- */
 caption,col,colgroup,table,tbody,td,tfoot,th,thead,tr {
@@ -439,8 +507,11 @@ sub {
         border-color: var(--green-base);
     }
 
-    .inverted pre code {
+    .inverted pre code,
+    .inverted pre code [class^="hljs"],
+    .inverted pre code [class*=" hljs"] {
         color: var(--green-d3) !important;
+        background: none !important;
     }
 
     .inverted table { border-color: var(--green-base); }
