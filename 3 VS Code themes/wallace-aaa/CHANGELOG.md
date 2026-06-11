@@ -3,6 +3,13 @@ All notable changes to the "wallace-aaa" extension will be documented in this fi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [2.1.1] - 2026-06-11
+- Current line is now marked with a border (`editor.lineHighlightBorder`,
+  Dark -2) instead of a filled background, so text on the current line
+  keeps full AA/AAA contrast against the editor background.
+- Selection background dropped one step (Dark -1 → Dark -2) to dim the
+  selected-text surface.
+
 ## [2.1.0] - 2026-06-11
 - Version 3 palette: ramp compressed toward base (step 0.087, was 0.1086)
   after the version 2 background proved slightly too dark in use. New

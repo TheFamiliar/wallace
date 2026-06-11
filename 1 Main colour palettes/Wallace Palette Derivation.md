@@ -276,8 +276,8 @@ uniformly (~0.83×), promoting each standard's rows one rung:
 | Light +2 | 0.674 | `#61a972` | **AA foreground + accents** |
 | Light +1 | 0.587 | `#468e58` | (unused by the standards) |
 | Base | 0.500 | `#2b7440` | **origin** — never moves |
-| Dark −1 | 0.413 | `#075b28` | selections, borders |
-| Dark −2 | 0.326 | `#004211` | raised surfaces, line highlight |
+| Dark −1 | 0.413 | `#075b28` | borders |
+| Dark −2 | 0.326 | `#004211` | raised surfaces, line highlight, selections |
 | Dark −3 | 0.239 | `#002909` | **official background** |
 | Dark −4 | 0.152 | `#001300` | recessed surfaces, code blocks |
 

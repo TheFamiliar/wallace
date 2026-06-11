@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "Wallace",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "license": "MPL-2.0",
     "description": "Single source of truth for the Wallace palette and role map. Apps formats are emitted from this file by generate.py. Derivation: see '1 Main colour palettes/Wallace Palette Derivation.md'.",
     "origin": {
@@ -235,7 +235,7 @@
     }
   },
   "surfaces": {
-    "selection": "dark1",
+    "selection": "dark2",
     "lineHighlight": "dark2",
     "raised": "dark2",
     "recessed": "dark4",

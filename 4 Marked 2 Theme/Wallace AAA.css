@@ -450,17 +450,17 @@ sub {
     .inverted table tbody { background: var(--green-l4); }
     .inverted table tr:nth-child(even) td { background: var(--green-l3); }
 
-    /* --- Selection (Dark -1, matching AAA editor.selectionBackground) --- */
+    /* --- Selection (Dark -2, matching AAA editor.selectionBackground) --- */
     ::selection {
-        background: rgba(7,91,40,.99);
+        background: rgba(0,66,17,.99);
     }
 
     h1::selection,h2::selection,h3::selection,h4::selection,h5::selection,h6::selection {
-        background-color: rgba(7,91,40,.99);
+        background-color: rgba(0,66,17,.99);
     }
 
     li::selection,ol::selection,p::selection {
-        background-color: rgba(7,91,40,.99);
+        background-color: rgba(0,66,17,.99);
     }
 
     code::selection {
@@ -474,11 +474,11 @@ sub {
     }
 
     a::selection {
-        background-color: rgba(7,91,40,.99);
+        background-color: rgba(0,66,17,.99);
     }
 
     td::selection,th::selection,caption::selection {
-        background-color: rgba(7,91,40,.99);
+        background-color: rgba(0,66,17,.99);
     }
 
     .inverted ::selection {
