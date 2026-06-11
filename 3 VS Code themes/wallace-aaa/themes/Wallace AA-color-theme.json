@@ -242,7 +242,7 @@
 			],
 			"settings": {
 				"fontStyle": "normal",
-				"foreground": "#7a8c3a"
+				"foreground": "#039885"
 			}
 		},
 		{
@@ -258,7 +258,7 @@
 				"support.type.sys-types"
 			],
 			"settings": {
-				"foreground": "#0094a7"
+				"foreground": "#039885"
 			}
 		},
 		{
@@ -311,7 +311,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#3a8bbe"
+				"foreground": "#b27238"
 			}
 		},
 		{
@@ -321,7 +321,7 @@
 				"variable.function.constructor"
 			],
 			"settings": {
-				"foreground": "#3a8bbe"
+				"foreground": "#039885"
 			}
 		},
 		{
@@ -364,6 +364,16 @@
 			}
 		},
 		{
+			"name": "HTML Class and ID Attribute Values",
+			"scope": [
+				"meta.attribute.class string",
+				"meta.attribute.id string"
+			],
+			"settings": {
+				"foreground": "#039885"
+			}
+		},
+		{
 			"name": "CSS Strings",
 			"scope": [
 				"string.quoted.single.scss",
@@ -373,7 +383,7 @@
 				"meta.definition.variable.scss"
 			],
 			"settings": {
-				"foreground": "#7a8c3a"
+				"foreground": "#039885"
 			}
 		},
 		{
@@ -615,7 +625,7 @@
 				"punctuation.definition.quote.begin.markdown"
 			],
 			"settings": {
-				"foreground": "#039885"
+				"foreground": "#b27238"
 			}
 		},
 		{
@@ -1007,13 +1017,13 @@
 	],
 	"semanticHighlighting": true,
 	"semanticTokenColors": {
-		"namespace": "#0094a7",
-		"class": "#0094a7",
-		"interface": "#0094a7",
-		"struct": "#0094a7",
-		"enum": "#0094a7",
-		"type": "#0094a7",
-		"typeParameter": "#0094a7",
+		"namespace": "#039885",
+		"class": "#039885",
+		"interface": "#039885",
+		"struct": "#039885",
+		"enum": "#039885",
+		"type": "#039885",
+		"typeParameter": "#039885",
 		"function": "#3a8bbe",
 		"method": "#3a8bbe",
 		"magicFunction": "#3a8bbe",
@@ -1022,14 +1032,14 @@
 			"fontStyle": "italic"
 		},
 		"variable": "#9c7f26",
-		"parameter": "#9c7f26",
+		"parameter": "#b27238",
 		"selfParameter": "#9c7f26",
-		"property": "#0094a7",
+		"property": "#9c7f26",
 		"enumMember": "#b27238",
 		"variable.readonly": "#b27238",
 		"keyword": "#039885",
 		"number": "#b27238",
-		"string": "#7a8c3a",
+		"string": "#039885",
 		"comment": {
 			"foreground": "#838383",
 			"fontStyle": "italic"
